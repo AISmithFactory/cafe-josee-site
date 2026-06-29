@@ -1,0 +1,6 @@
+# Canonical host: https://aismith.io (Netlify). The crawl is allowed on purpose so
+# the noindex meta governs: a demo build sets seo.noindex=true (site.config) for a public-but-
+# -uncrawlable site; production sets it false. Do NOT add a Disallow here (see charter §SEO).
+User-agent: *
+Allow: /
+Sitemap: https://aismith.io/sitemap.xml

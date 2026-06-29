@@ -1,0 +1,4 @@
+# Demo noindex (header half; meta half is gated on seo.noindex in __root.tsx).
+# Remove at production promotion. See netlify.toml.
+/*
+  X-Robots-Tag: noindex

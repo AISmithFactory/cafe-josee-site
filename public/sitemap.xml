@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Static sitemap shipped by the site template (S7.1). Canonical host is
+     https://aismith.io (the production domain; demo serves the same file noindexed). -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://aismith.io/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://aismith.io/restaurants</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://aismith.io/cultural</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://aismith.io/ownership</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aismith.io/plans</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aismith.io/website</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+</urlset>

@@ -1,0 +1,40 @@
+/* spine/modules.css — styles for OPTIONAL modules (S3.3). Co-located with the driver
+   so neither ships unless the module is imported. Tokens only (S2.2): no raw hex, alpha
+   composed over the --shadow-color triplet, never a literal colour. */
+
+/* ---- Map (facade) ---------------------------------------------------------*/
+.map { border-radius: var(--radius); overflow: hidden;
+  background: var(--surface); border: 1px solid var(--line); }
+.map-frame { display: block; width: 100%; height: clamp(260px, 42vh, 460px);
+  border: 0; filter: grayscale(1) contrast(.92); }      /* match the muted ink aesthetic */
+.map-facade { display: flex; align-items: center; gap: 18px; width: 100%; text-align: left;
+  min-height: clamp(220px, 34vh, 360px); padding: clamp(20px, 4vw, 40px);
+  cursor: pointer; border: none; color: var(--sec-text, var(--text));
+  background:
+    repeating-linear-gradient(0deg,  transparent 0 22px, rgba(var(--shadow-color), .05) 22px 23px),
+    repeating-linear-gradient(90deg, transparent 0 22px, rgba(var(--shadow-color), .05) 22px 23px),
+    var(--surface);
+  transition: background .14s; }
+.map-facade:hover {
+  background:
+    repeating-linear-gradient(0deg,  transparent 0 22px, rgba(var(--shadow-color), .09) 22px 23px),
+    repeating-linear-gradient(90deg, transparent 0 22px, rgba(var(--shadow-color), .09) 22px 23px),
+    var(--surface); }
+.map-pin { display: inline-flex; flex: none; color: var(--accent); }
+.map-meta { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.map-label { font-weight: 700; font-size: clamp(17px, 2vw, 21px); }
+.map-caption { color: var(--sec-soft, var(--text-soft)); font-size: 15px; }
+.map-cta { margin-top: 6px; pointer-events: none; }      /* visual affordance; the wrapper is the button */
+
+/* ---- Hours ----------------------------------------------------------------*/
+.hours-title { font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(20px, 2.4vw, 26px); margin: 0 0 14px; }
+.hours-list { margin: 0; }
+.hours-row { display: flex; justify-content: space-between; gap: 24px;
+  padding: 9px 0; border-bottom: 1px solid var(--line); }
+.hours-row:last-child { border-bottom: 0; }
+.hours-row dt { font-weight: 600; }
+.hours-row dd { margin: 0; color: var(--sec-soft, var(--text-soft)); white-space: nowrap; }
+.hours-note { margin: 14px 0 0; color: var(--sec-soft, var(--text-soft)); font-size: 14px; }
+
+@media (prefers-reduced-motion: reduce) { .map-facade { transition: none; } }

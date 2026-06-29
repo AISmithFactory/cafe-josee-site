@@ -1,0 +1,16 @@
+# Netlify config. Front end only; server-side runs on the shared AISmith-functions Supabase
+# project. The X-Robots-Tag below is the header-half of the demo noindex (the meta-half is
+# gated on seo.noindex in __root.tsx). REMOVE this header block at production promotion (when
+# seo.noindex flips to false and the real domain is pointed).
+
+# Build: TanStack Start (Vite) with all 8 routes prerendered to static HTML (SSG).
+# The @netlify/vite-plugin-tanstack-start plugin emits the static site to dist/client and
+# an SSR fallback function to .netlify/v1/functions. Publish dir = prerendered static output.
+[build]
+  command = "npm run build"
+  publish = "dist/client"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"

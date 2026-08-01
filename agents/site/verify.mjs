@@ -33,7 +33,7 @@
 //            HARD FAIL, not a warning. CI must pass --ci.
 
 import { readFileSync, existsSync, readdirSync, statSync } from "node:fs";
-import { join, relative, basename } from "node:path";
+import { join, relative, basename, dirname } from "node:path";
 import { execSync } from "node:child_process";
 import { createHash } from "node:crypto";
 
@@ -407,7 +407,7 @@ function braced(src, openIdx) { // openIdx points at the '{' after logo=
   return null;
 }
 function resolveLogoNode() {
-  for (const src of [rootSrc, cfg]) {
+  for (const [src, srcPath] of [[rootSrc, P.root], [cfg, P.config]]) {
     if (!src) continue;
     const m = src.match(/logo\s*=\s*\{/);
     if (!m) continue;
@@ -418,25 +418,63 @@ function resolveLogoNode() {
       for (const s2 of [rootSrc, cfg]) {
         if (!s2) continue;
         const def = s2.match(new RegExp("const\\s+" + inner + "\\s*=\\s*([\\s\\S]*?);", ""));
-        if (def) return { node: def[1], src: s2, via: inner };
+        if (def) return { node: def[1], src: s2, srcPath, via: inner };
       }
-      return { node: inner, src, via: inner, unresolved: true };
+      return { node: inner, src, srcPath, via: inner, unresolved: true };
     }
-    return { node: inner, src, via: "inline" };
+    return { node: inner, src, srcPath, via: "inline" };
   }
   return null;
 }
 const logoRef = resolveLogoNode();
 // (c) classify image vs text-only.
 const VECTOR = /<(path|polygon|polyline|circle|ellipse|rect|line|image|use)\b/i;
-function isImageNode(node, srcText) {
+// Resolve a local module specifier ("@/components/Logo", "./Logo") to a file on disk.
+// v0.13.4 (#155 companion): a mark delivered as a LOCAL COMPONENT is still an image mark.
+// Before this, isImageNode saw only inline JSX / <img> / an imported asset FILE, so
+// aismith.io's real anvil-and-spark vector -- drawn with currentColor so the header
+// renders it Iron and the footer Paper -- classified as a text-only wordmark. Proof that
+// this was the checker and not the site: the reference seed's own logo failed it too.
+const CODE_EXT = [".tsx", ".ts", ".jsx", ".js"];
+// v0.13.6: resolve RELATIVE specifiers against the IMPORTING FILE's directory, not against
+// src/. The first cut resolved "../components/Logo" as ROOT/src/../components/Logo, which is
+// ROOT/components/Logo -- wrong, and it silently returned null so the mark stayed unresolved.
+// It passed its fixture only because the fixture used the "@/" alias, i.e. the case the code
+// implemented rather than the case aismith.io actually ships.
+function resolveLocalModule(spec, fromFile) {
+  if (!spec) return null;
+  let rel = null;
+  if (spec.startsWith("@/") || spec.startsWith("~/")) rel = join(ROOT, "src", spec.slice(2));
+  else if (spec.startsWith("./") || spec.startsWith("../")) {
+    rel = fromFile ? join(dirname(fromFile), spec) : join(ROOT, "src", spec);
+  }
+  else if (spec.startsWith("src/") || spec.startsWith("/src/")) rel = join(ROOT, spec.replace(/^\//, ""));
+  else return null; // bare specifier = a package, not a local mark
+  for (const cand of [rel, ...CODE_EXT.map((e) => rel + e), ...CODE_EXT.map((e) => join(rel, "index" + e))]) {
+    try { if (existsSync(cand) && statSync(cand).isFile()) return cand; } catch { /* ignore */ }
+  }
+  return null;
+}
+function isImageNode(node, srcText, depth = 0, fromFile = null) {
   if (/<img\b/i.test(node)) return true;
   if (/<svg\b/i.test(node) && VECTOR.test(node)) return true;
-  // imported asset referenced by the node (import x from "...png|svg|webp|...")
   const ids = [...node.matchAll(/\b([A-Za-z_$][\w$]*)\b/g)].map((m) => m[1]);
   for (const id of ids) {
+    // (i) imported asset FILE referenced by the node
     const imp = (srcText || "").match(new RegExp("import\\s+" + id + "\\s+from\\s+[\"'`][^\"'`]+\\.(svg|png|webp|jpe?g|avif|gif)[\"'`]", "i"));
     if (imp) return true;
+    // (ii) LOCAL COMPONENT module: resolve it and classify its contents (one hop, no cycles)
+    if (depth < 2) {
+      const m = (srcText || "").match(
+        new RegExp("import\\s+(?:\\{[^}]*\\b" + id + "\\b[^}]*\\}|" + id + ")\\s+from\\s+[\"'`]([^\"'`]+)[\"'`]")
+      );
+      const file = m && resolveLocalModule(m[1], fromFile);
+      if (file) {
+        let body = "";
+        try { body = readFileSync(file, "utf8"); } catch { /* unreadable = not proof */ }
+        if (body && isImageNode(body, body, depth + 1, file)) return true;
+      }
+    }
   }
   return false;
 }
@@ -444,7 +482,7 @@ function isImageNode(node, srcText) {
 if (!logoRef) {
   (CI ? bad : soft)("logo node not found (no logo={...} on SiteHeader/SiteFooter); cannot prove a real image mark");
 } else {
-  const img = isImageNode(logoRef.node, logoRef.src);
+  const img = isImageNode(logoRef.node, logoRef.src, 0, logoRef.srcPath);
   if (markKind === "wordmark") {
     if (img) ok("brandMark declared 'wordmark' and the logo carries an image mark (over-delivers; ok)");
     else ok(`brandMark explicitly declared 'wordmark' -- text mark sanctioned (genuine typographic brand; ${logoRef.via})`);

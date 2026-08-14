@@ -63,10 +63,10 @@ env:
   # MUST be the FULL 40-character sha, never an abbreviated one: actions/checkout
   # fetches the ref directly and a short sha fails with "git failed with exit code 1".
   # Never a moving ref such as `main` (site-contract 1.8.6).
-  SEED_REF: main   # the seed IS the baseline; it verifies against its own HEAD
+  SEED_REF: d719e03b9d7b2b0b9859cc3c274458a91591121c   # PINNED to the seed sha this site was built from, per this file's own line 38
   # The charter to reconcile routes against (bidirectional). Leave as-is if the site
   # ships <slug>-site-charter.md at the repo root; clear the --charter arg below if not.
-  CHARTER: "aismith-site-charter.md"   # the seed ships its own charter at the repo root
+  CHARTER: "cafe-josee-site-charter.md"   # THIS repo's charter, not the seed's
 
 jobs:
   site-verify:

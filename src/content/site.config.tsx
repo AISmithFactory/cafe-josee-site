@@ -122,8 +122,10 @@ export const facts = {
     { label: "Dinsdag", value: "08.45 tot 16.30" },
     { label: "Woensdag", value: "08.45 tot 16.30" },
     { label: "Donderdag", value: "Gesloten" },
-    { label: "Vrijdag", value: "08.45 tot 16.30, apero 17.00 tot 23.00" },
-    { label: "Zaterdag", value: "10.00 tot 16.30, apero 17.00 tot 23.00" },
+    { label: "Vrijdag", value: "08.45 tot 16.30" },
+    { label: "Zaterdag", value: "10.00 tot 16.30" },
     { label: "Zondag", value: "10.00 tot 16.30" },
+    { label: "Apero, vrijdag", value: "17.00 tot 23.00" },
+    { label: "Apero, zaterdag", value: "17.00 tot 23.00" },
   ],
 };

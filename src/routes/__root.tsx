@@ -13,7 +13,7 @@ import "../styles/spine.css";
 // The real mark, extracted from the card Café Josee publishes as its own profile image:
 // two teal cups over a green dome. Keyed off the printed card ground so it sits on any tone.
 const Logo = (
-  <span className="logo-lockup" style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
+  <span className="logo-lockup" style={{ display: "inline-flex", alignItems: "center", gap: 10, whiteSpace: "nowrap" }}>
     <img src="/cafe-josee-mark.png" alt="" width={26} height={34} style={{ display: "block" }} />
     <span>Café Josee</span>
   </span>
@@ -41,7 +41,7 @@ function RootLayout() {
         nav={nav}
         currentPath={path}
         memberLink={undefined}
-        cta={<a className="btn btn-action" href={facts.phoneHref}>Bel {facts.phone}</a>}
+        cta={<a className="btn btn-action" href={facts.phoneHref}>Bel ons</a>}
       />
       <Outlet />
       <SiteFooter

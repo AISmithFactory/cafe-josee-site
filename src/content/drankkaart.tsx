@@ -1,63 +1,53 @@
-// content/drankkaart.tsx -- the drinks card, BUILT into a route (build-agent S5:
-// a page sourced from a capture is built, never linked out). Every line and every
-// price is read from the drinks card Café Josee publishes on its own Google profile.
+// content/drankkaart.tsx -- the drinks card, BUILT into a route (build-agent S5: a page
+// sourced from a capture is built, never linked out). Every line and every price is read
+// from the drinks card Cafe Josee publishes on its own Google profile.
+// Layout note: the four lists use the spine's Hours module, which is the sanctioned
+// two-column labelled-list primitive (S3.3). Its CSS is co-located and only ships because
+// this route imports it. No bespoke structural CSS is written here.
 import * as React from "react";
 import { PageTitle, Section, Band, SecTitle, Eyebrow, Lead, Em, Btn } from "../components/spine";
+import { Hours } from "../components/spine/modules/hours";
 import { photos, facts } from "./site.config";
 
-type Item = { n: string; p?: string; d?: string };
-
-function List({ items }: { items: Item[] }) {
-  return (
-    <dl className="hours-list" style={{ marginTop: 14 }}>
-      {items.map((it, i) => (
-        <div className="hours-row" key={i}>
-          <dt>{it.n}{it.d ? <><br /><span style={{ fontSize: ".86em", opacity: .75 }}>{it.d}</span></> : null}</dt>
-          <dd>{it.p}</dd>
-        </div>
-      ))}
-    </dl>
-  );
-}
-
-const koffie: Item[] = [
-  { n: "Espresso", p: "2,5" },
-  { n: "Dubbele espresso", p: "2,9" },
-  { n: "Americano", p: "3,1" },
-  { n: "Cortado", p: "3,5" },
-  { n: "Cappucino", p: "3,7" },
-  { n: "Latte", p: "4,1" },
-  { n: "Flat white", p: "4" },
-  { n: "Extra shot koffie", p: "0,4" },
+const koffie = [
+  { label: "Espresso", value: "2,5" },
+  { label: "Dubbele espresso", value: "2,9" },
+  { label: "Americano", value: "3,1" },
+  { label: "Cortado", value: "3,5" },
+  { label: "Cappucino", value: "3,7" },
+  { label: "Latte", value: "4,1" },
+  { label: "Flat white", value: "4" },
+  { label: "Extra shot koffie", value: "0,4" },
 ];
 
-const warm: Item[] = [
-  { n: "Thee", p: "3,3", d: "English breakfast, groene Sencha, jasmijn, rooibos, citroenmelisse, kamille, kruidentuin" },
-  { n: "Verse gemberthee", p: "3,8", d: "met citroen en appelsien" },
-  { n: "Verse muntthee", p: "3,5", d: "zakje groene thee erbij 0,3" },
-  { n: "Chai latte", p: "3,8" },
-  { n: "Dirty chai", p: "4,2", d: "chai met een shotje koffie" },
-  { n: "Warme chocolademelk", p: "4,3", d: "pure, melk of witte chocolade" },
-  { n: "Matcha latte", p: "4,5" },
-  { n: "Havermelk", p: "0,4" },
+const warm = [
+  { label: "Thee (English breakfast, groene Sencha, jasmijn, rooibos, citroenmelisse, kamille, kruidentuin)", value: "3,3" },
+  { label: "Verse gemberthee (met citroen en appelsien)", value: "3,8" },
+  { label: "Verse muntthee", value: "3,5" },
+  { label: "Zakje groene thee erbij", value: "0,3" },
+  { label: "Chai latte", value: "3,8" },
+  { label: "Dirty chai (chai met een shotje koffie)", value: "4,2" },
+  { label: "Warme chocolademelk (pure, melk of witte chocolade)", value: "4,3" },
+  { label: "Matcha latte", value: "4,5" },
+  { label: "Havermelk", value: "0,4" },
 ];
 
-const fris: Item[] = [
-  { n: "Spa", p: "2,6", d: "rood of blauw" },
-  { n: "Weldenhof sap", p: "3,1", d: "appel of appelsien" },
-  { n: "Ritchie", p: "3,1", d: "cola of cola zero" },
-  { n: "Proviant", p: "3,5", d: "rabarber of citroen" },
-  { n: "Charitea Mate", p: "4" },
-  { n: "Fentimans", p: "3,5", d: "tonic, rose lemonade of ginger beer" },
-  { n: "Bron Kombucha", p: "4,2" },
-  { n: "Huisgemaakte limonade", p: "4,4", d: "smaken van de Siroperie, zie het bord aan de toog" },
+const fris = [
+  { label: "Spa (rood of blauw)", value: "2,6" },
+  { label: "Weldenhof sap (appel of appelsien)", value: "3,1" },
+  { label: "Ritchie (cola of cola zero)", value: "3,1" },
+  { label: "Proviant (rabarber of citroen)", value: "3,5" },
+  { label: "Charitea Mate", value: "4" },
+  { label: "Fentimans (tonic, rose lemonade of ginger beer)", value: "3,5" },
+  { label: "Bron Kombucha", value: "4,2" },
+  { label: "Huisgemaakte limonade (smaken van de Siroperie, zie het bord aan de toog)", value: "4,4" },
 ];
 
-const kindjes: Item[] = [
-  { n: "Kindersap", p: "2,5", d: "appel of appelsien" },
-  { n: "Huisgemaakte kinderlimo", p: "2,7" },
-  { n: "Warme kinderchoco", p: "3,6", d: "pure, melk of witte chocolade" },
-  { n: "Koude kinderchoco", p: "2,7" },
+const kindjes = [
+  { label: "Kindersap (appel of appelsien)", value: "2,5" },
+  { label: "Huisgemaakte kinderlimo", value: "2,7" },
+  { label: "Warme kinderchoco (pure, melk of witte chocolade)", value: "3,6" },
+  { label: "Koude kinderchoco", value: "2,7" },
 ];
 
 export function Drankkaart() {
@@ -73,17 +63,18 @@ export function Drankkaart() {
       </Section>
 
       <Section tone="surface">
-        <div className="grid grid-2" style={{ marginTop: 6 }}>
+        <div className="grid grid-2">
           <div>
             <SecTitle>Koffie</SecTitle>
-            <List items={koffie} />
-            <p style={{ marginTop: 10, color: "var(--text-soft)", fontSize: ".92rem" }}>
-              Deca is er ook. Alle koffies zijn ook iced te verkrijgen.
-            </p>
+            <div style={{ marginTop: 18 }}>
+              <Hours heading="" rows={koffie} note="Deca is er ook. Alle koffies zijn ook iced te verkrijgen." />
+            </div>
           </div>
           <div>
             <SecTitle>Fris</SecTitle>
-            <List items={fris} />
+            <div style={{ marginTop: 18 }}>
+              <Hours heading="" rows={fris} />
+            </div>
           </div>
         </div>
       </Section>
@@ -92,14 +83,15 @@ export function Drankkaart() {
         <div className="grid grid-2">
           <div>
             <SecTitle>Warm</SecTitle>
-            <List items={warm} />
+            <div style={{ marginTop: 18 }}>
+              <Hours heading="" rows={warm} />
+            </div>
           </div>
           <div>
             <SecTitle>Kindjes</SecTitle>
-            <List items={kindjes} />
-            <p style={{ marginTop: 18, color: "var(--text-soft)", fontSize: ".92rem" }}>
-              Een rekening per tafel, graag.
-            </p>
+            <div style={{ marginTop: 18 }}>
+              <Hours heading="" rows={kindjes} note="Een rekening per tafel, graag." />
+            </div>
           </div>
         </div>
       </Section>

@@ -31,6 +31,7 @@ export function Praktisch() {
             <SecTitle>Openingsuren</SecTitle>
             <div style={{ marginTop: 20 }}>
               <Hours
+                heading=""
                 rows={facts.hours}
                 note="Deze uren komen uit het publieke Google-profiel van het café en uit hun eigen Instagram, die met elkaar overeenkomen. Ze zijn nog niet met de zaak bevestigd. De avonduren op vrijdag en zaterdag lopen sinds 14 augustus 2026."
               />

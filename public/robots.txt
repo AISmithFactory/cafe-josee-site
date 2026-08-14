@@ -1,6 +1,6 @@
-# Canonical host: https://aismith.io (Netlify). The crawl is allowed on purpose so
-# the noindex meta governs: a demo build sets seo.noindex=true (site.config) for a public-but-
-# -uncrawlable site; production sets it false. Do NOT add a Disallow here (see charter §SEO).
+# Cafe Josee concept site. The crawl is deliberately ALLOWED so the noindex meta and the
+# X-Robots-Tag header govern (intake S6): a Disallow here would stop the crawler reading
+# the noindex and could leave a bare URL in results. Do NOT add a Disallow.
 User-agent: *
 Allow: /
-Sitemap: https://aismith.io/sitemap.xml
+Sitemap: https://cafe-josee.demos.aismith.io/sitemap.xml

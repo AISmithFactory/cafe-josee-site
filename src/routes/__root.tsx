@@ -1,21 +1,27 @@
-// routes/__root.tsx — root layout + document shell (TanStack Start). SPINE wiring.
+// routes/__root.tsx -- root layout + document shell (TanStack Start). SPINE wiring.
 // Owns the HTML shell so `lang` is hard-set here (S7.2), not left to the scaffold.
-// HeadContent renders the merged root + per-route head() (S7.1). The durable value
-// (components + tokens + composition) is framework-agnostic.
+// HeadContent renders the merged root + per-route head() (S7.1).
 import * as React from "react";
 import {
   createRootRoute, Outlet, useRouterState, HeadContent, Scripts,
 } from "@tanstack/react-router";
 import { SiteHeader, SiteFooter, SkipLink } from "../components/spine";
-import { nav, footerColumns, socials, legal, site, seo } from "../content/site.config";
+import { nav, footerColumns, socials, legal, seo, facts } from "../content/site.config";
 import "../styles/tokens.css";
 import "../styles/spine.css";
 
-const Logo = <>AI<span className="dot">·</span>Smith</>;
+// The real mark, extracted from the card Cafe Josee publishes as its own profile image:
+// two teal cups over a green dome. Keyed off the printed card ground so it sits on any tone.
+const Logo = (
+  <span className="logo-lockup" style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
+    <img src="/cafe-josee-mark.png" alt="" width={26} height={34} style={{ display: "block" }} />
+    <span>Cafe Josee</span>
+  </span>
+);
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="nl">
       <head><HeadContent /></head>
       <body>
         {children}
@@ -35,13 +41,13 @@ function RootLayout() {
         nav={nav}
         currentPath={path}
         memberLink={undefined}
-        cta={<a className="btn btn-action" href="mailto:contact@aismith.io">Start a conversation</a>}
+        cta={<a className="btn btn-action" href={facts.phoneHref}>Bel {facts.phone}</a>}
       />
       <Outlet />
       <SiteFooter
         logo={Logo}
-        tagline="The work, already done."
-        address={<>{site.contactEmail}</>}
+        tagline="Buurtbar aan het Te Boelaerpark."
+        address={<>{facts.address}<br />{facts.phone}</>}
         columns={footerColumns}
         socials={socials}
         legal={legal}
@@ -52,24 +58,25 @@ function RootLayout() {
 }
 
 export const Route = createRootRoute({
-  // Root defaults; each content route adds its own head() which overrides title/description.
   head: () => ({
     meta: [
-      { title: "AI Smith · Software that already speaks your organisation" },
-      { name: "description", content: "Made to fit. Yours to keep. Software built for how your organisation works, run for you, and yours to keep." },
-      { property: "og:title", content: "AI Smith" },
-      { property: "og:description", content: "Made to fit. Yours to keep." },
+      { title: "Cafe Josee, buurtbar in Borgerhout" },
+      { name: "description", content: "Koffie, ontbijt, lunch en taart aan het Te Boelaerpark. Sinds kort ook apero op vrijdag en zaterdag." },
+      { property: "og:title", content: "Cafe Josee" },
+      { property: "og:description", content: "Buurtbar met koffie, brunch, lunch, taart en apero aan het Te Boelaerpark." },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "nl_BE" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      // Demo↔production privacy switch (S7): noindex when seo.noindex is true (src/content/site.config).
+      // Demo/production privacy switch (S7): noindex while seo.noindex is true.
       ...(seo.noindex ? [{ name: "robots", content: "noindex,nofollow" }] : []),
-      // NOTE: no og:image asset ships in the concept seed (declared in the charter);
-      // add a 1200x630 card to /public and an og:image meta before launch.
+      // NOTE: no og:image asset ships with the concept (declared in the charter);
+      // add a 1200x630 card before go-live.
     ],
     links: [
-      // S2.4 — fonts loaded by the app (swap for @fontsource self-hosting in production).
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600&display=swap" },
+      { rel: "preconnect", href: "https://lh3.googleusercontent.com" },
+      { rel: "icon", href: "/cafe-josee-mark.png" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..800&family=Inter:wght@400;500;600&display=swap" },
     ],
   }),
   component: RootLayout,

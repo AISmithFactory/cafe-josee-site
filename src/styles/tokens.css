@@ -1,65 +1,75 @@
 /* ============================================================================
-   tokens.css — THE SKIN.  The only file you edit to re-skin a site.
-   AI Smith instance ("Ink, Paper, Ember").  Conforms to as-site-spine-standard
-   §S2 + Appendix A: fixed semantic token NAMES, only the VALUES change per site.
+   tokens.css -- THE SKIN.  The only style file edited to re-skin a site.
+   Cafe Josee instance ("Kop, Kom, Karton").  Conforms to as-site-spine-standard
+   S2 + Appendix A: fixed semantic token NAMES, only the VALUES change per site.
+
+   Brand read (intake S6, from the render, never inferred from the words):
+   the Cafe Josee mark is two teal cups stacked over a green dome, printed on a
+   warm cream card, with the name set in a coral brush script. The drinks card
+   repeats the same two inks on white. So: cream paper ground, a teal ink family,
+   green as the second brand hue, coral reserved for the mark itself.
+
+   Sampled from the published mark:
+     teal cup      #0295A5      green dome    #0D9A62
+     coral script  #F0605E      card ground   warm cream
 
    Contract (S2):
-   - Spine components reference these names ONLY — never a raw hex, never a
+   - Spine components reference these names ONLY, never a raw hex, never a
      colour-named token. Re-skinning = change values here, touch nothing else.
    - Accent used AS TEXT on a light surface uses --accent-text (AA-safe),
-     never --accent.  (Ember #C0632E on Paper = 3.81:1 → fails AA;
-     Ember Deep #9E4E1E on Paper = 5.42:1 → passes.)
-   - Every text/bg pair below clears WCAG AA.
+     never --accent.  (Teal #0F94A5 on cream = 3.09:1, fails AA;
+     Teal Diep #0A6270 on cream = 6.61:1, passes.)
+   - Every text/bg pair below clears WCAG AA. Matrix re-derived on THIS palette
+     at build time (S2.3); the numbers are in the charter.
    ============================================================================ */
 
 :root {
   /* ---- colour roles -------------------------------------------------------*/
-  --bg:            #F8F5EF;            /* Paper — page background              */
-  --bg-alt:        #E7E1D7;            /* Mist  — alternating section bg       */
-  --surface:       #FFFFFF;            /* card / panel bg                      */
-  --surface-warm:  #F3EEE6;            /* secondary card bg                    */
-  --text:          #1E1D1B;            /* Iron  — primary text                 */
-  --text-soft:     #5E574F;            /* soft secondary text (Anvil family, darkened to clear AA on Mist: 5.47) */
-  --line:          rgba(30, 29, 27, .12);
-  --line-soft:     rgba(30, 29, 27, .07);
+  --bg:            #FBF8EF;            /* Karton, warm cream page ground        */
+  --bg-alt:        #EBE7D6;            /* Karton Diep, alternating section bg   */
+  --surface:       #FFFFFF;            /* card / panel bg (the drinks card)     */
+  --surface-warm:  #F5F1E4;            /* secondary card bg                     */
+  --text:          #14302D;            /* Diep Groen, primary text              */
+  --text-soft:     #4A5B55;            /* soft secondary text (5.80 on Karton Diep) */
+  --line:          rgba(20, 48, 45, .13);
+  --line-soft:     rgba(20, 48, 45, .07);
 
-  --action:        #9E4E1E;            /* Ember Deep — CTA fill behind white text (5.42:1) */
-  --action-strong: #7E3D15;            /* pressed / chunky shadow              */
-  --accent:        #C0632E;            /* Ember — fills, marks, large display, on-dark glow */
-  --accent-text:   #9E4E1E;            /* Ember Deep — accent AS TEXT on light (AA-safe; default value) */
-  --accent-on-dark:#E0915F;            /* Ember lightened — accent AS TEXT on dark/slate (Iron 6.73, Slate 5.43); spine.css uses it for .em/.eyebrow/.btn-ghost in dark sections */
-  --highlight:     #C0632E;            /* secondary accent / dots / dividers   */
+  --action:        #0A6270;            /* Teal Diep, CTA fill behind white text (7.01:1) */
+  --action-strong: #074B56;            /* pressed / chunky shadow               */
+  --accent:        #0F94A5;            /* Teal, the cup ink: fills, marks, large display */
+  --accent-text:   #0A6270;            /* Teal Diep, accent AS TEXT on light (AA-safe) */
+  --accent-on-dark:#79D6E2;            /* Teal Licht, accent AS TEXT on dark (7.93 / 5.50) */
+  --highlight:     #0D9A62;            /* Josee Groen, the dome: dividers, dots */
 
-  --on-dark:       #F8F5EF;            /* text on dark / accent sections       */
-  --on-dark-soft:  rgba(248, 245, 239, .82);
-  --rule-on-dark:  rgba(248, 245, 239, .18);  /* hairline divider on dark (Paper @ low alpha) */
-  --dark:          #1E1D1B;            /* Iron — institutional dark section bg */
-  --dark-alt:      #26302E;            /* Slate — optional second dark (grant/cultural register) */
+  --on-dark:       #F7F4E9;            /* text on dark sections                 */
+  --on-dark-soft:  rgba(247, 244, 233, .82);
+  --rule-on-dark:  rgba(247, 244, 233, .18);
+  --dark:          #123531;            /* Diep Groen, institutional dark bg      */
+  --dark-alt:      #12504C;            /* Bosgroen, second dark register         */
 
   /* ---- type ---------------------------------------------------------------*/
-  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  /* Concept stand-ins (intake S7). The printed card sets the name in a coral
+     brush script and the drinks card in a heavy geometric sans. Neither face is
+     identified publicly, so the demo ships free faces matched to the register;
+     the exact faces are a go-live swap. */
+  --font-display: 'Fraunces', Georgia, serif;
   --font-body:    'Inter', -apple-system, system-ui, sans-serif;
-  /* --font-logo not used for AI Smith (wordmark is set in --font-display)     */
 
   /* ---- geometry -----------------------------------------------------------*/
   --max:        1240px;
   --gutter:     clamp(20px, 4.5vw, 64px);
-  --radius:     12px;
-  --radius-lg:  20px;
+  --radius:     14px;
+  --radius-lg:  24px;
   --radius-pill: 999px;
 
   /* ---- elevation / motion -------------------------------------------------*/
-  --shadow-color: 30, 29, 27;          /* Iron RGB triplet — compose shadows via rgba(var(--shadow-color), a) */
-  --shadow:     0 18px 40px -26px rgba(var(--shadow-color), .45);
-  --shadow-lg:  0 28px 54px -24px rgba(var(--shadow-color), .5);
-  --tilt:       -1.2deg;              /* decorative rotation; set 0deg to disable */
+  --shadow-color: 20, 48, 45;
+  --shadow:     0 18px 40px -26px rgba(var(--shadow-color), .40);
+  --shadow-lg:  0 28px 54px -24px rgba(var(--shadow-color), .46);
+  --tilt:       -1.2deg;
 
-  /* ---- OPTIONAL slots (declare only if the brand needs them) --------------
-     Secondary-palette hues (S4.6): up to five --hue-N / --hue-N-ink pairs
-     (+ optional --hue-N-soft). Each declared pair must clear WCAG AA; the
-     Section `hue` prop maps to them, undeclared slots fall back to the tone.
-     AI Smith declares none (single-accent brand). Example (ZG family):
-       --hue-1: #F4C542;  --hue-1-ink: #213847;   (mustard)
-       --hue-2: #EE5FA0;  --hue-2-ink: #FFFFFF;   (rose/magenta)
-     Card background override: --card-bg (EventCard ground; defaults to --surface). */
+  /* ---- OPTIONAL slots -----------------------------------------------------
+     S4.6 secondary-palette hue slots: Cafe Josee declares none. The brand is a
+     two-ink family (teal + green) already carried by --accent and --highlight,
+     and the coral is the mark's own colour, not a section ground. */
 }

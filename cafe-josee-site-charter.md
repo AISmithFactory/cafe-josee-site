@@ -197,6 +197,10 @@ Carried from the brief. Every line here is a go-live item.
     the display face. The real script is a go-live swap alongside the fonts.
 14. **No `og:image`.**
 
+17. **One interior photo shows staff faces.** It is the cafe's own photograph, published by
+    them on their own Google profile, so it ships under the standing default. It is still
+    identifiable people, so confirm it at go-live like any named person.
+
 **Wiring**
 
 15. **Contact form goes to `contact@aismith.io`.** Their real address is known and unused.

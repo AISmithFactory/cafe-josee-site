@@ -1,11 +1,11 @@
 // site.config.tsx -- PER-SITE CONTENT.  This + pages + tokens.css are all you edit.
-// Cafe Josee instance (Borgerhout, Antwerpen). Prospect DEMO concept, intake Scenario 2.
+// Café Josee instance (Borgerhout, Antwerpen). Prospect DEMO concept, intake Scenario 2.
 // No secret lives here; integration endpoints are public routes to edge functions that
 // hold their keys in env (S6).
 import type { NavItem, FooterColumn, Social } from "../components/spine/chrome";
 
 export const site = {
-  name: "Cafe Josee",
+  name: "Café Josee",
 
   // DEMO destination (build-agent S3 / intake S9): the shared catch-all, NEVER the
   // prospect's own address. The cafe's public address (josee.cafe@gmail.com, read from
@@ -24,7 +24,7 @@ export const site = {
   // S5: data posture -- declared in cafe-josee-site-charter.md as "no-db, static-in-repo",
   // connecting the shared AISmith-functions backbone. Nothing is stored.
 
-  // verify.mjs [6] LOGO -- brand mark KIND. Cafe Josee has a REAL mark (two teal cups over
+  // verify.mjs [6] LOGO -- brand mark KIND. Café Josee has a REAL mark (two teal cups over
   // a green dome), extracted from the mark published on their own Facebook profile and
   // keyed off its printed card ground. So this is a genuine image mark, not a wordmark.
   brandMark: { kind: "image", src: "/cafe-josee-mark.png" },
@@ -37,7 +37,7 @@ export const nav: NavItem[] = [
   { label: "Koffie en keuken", href: "/" },
   { label: "Drankkaart", href: "/drankkaart" },
   { label: "Apero", href: "/apero" },
-  { label: "Het cafe", href: "/het-cafe" },
+  { label: "Het café", href: "/het-cafe" },
   { label: "Praktisch", href: "/praktisch" },
 ];
 
@@ -46,7 +46,7 @@ export const footerColumns: FooterColumn[] = [
     { label: "Drankkaart", href: "/drankkaart" },
     { label: "Apero op vrijdag en zaterdag", href: "/apero" },
   ]},
-  { title: "Het cafe", links: [
+  { title: "Het café", links: [
     { label: "De zaak en de buurt", href: "/het-cafe" },
     { label: "Openingsuren en adres", href: "/praktisch" },
   ]},
@@ -74,14 +74,14 @@ export const socials: Social[] = [
 ];
 
 // S8.3 / footer rule. The concept marker (intake S6) lives here.
-export const legal = "Cafe Josee, Vosstraat 2, 2140 Borgerhout. Conceptsite door AI Smith, 2026.";
+export const legal = "Café Josee, Vosstraat 2, 2140 Borgerhout. Conceptsite door AI Smith, 2026.";
 
 // S7.4: privacy-notice data. Reflects this site's ACTUAL subprocessors, never boilerplate.
 // Netlify hosts; the contact form posts to the shared AISmith-functions `contact` fn which
 // sends through Resend; the Praktisch page carries a Map facade that loads Google only on
 // a click.
 export const privacy = {
-  controller: { name: "Cafe Josee", email: "contact@aismith.io" },
+  controller: { name: "Café Josee", email: "contact@aismith.io" },
   subprocessors: [
     { name: "Netlify", purpose: "hosting en serverlogs", location: "EU/VS", link: "https://www.netlify.com/privacy/" },
     { name: "Resend", purpose: "verzenden van het contactformulier", location: "EU/VS", link: "https://resend.com/legal/privacy-policy" },
@@ -92,7 +92,7 @@ export const privacy = {
   lang: "nl" as const,
 };
 
-// Photography (intake S6: referenced, not claimed). Cafe Josee has no website, so there
+// Photography (intake S6: referenced, not claimed). Café Josee has no website, so there
 // is no site of their own to reuse image URLs from. These are the photos published on
 // their OWN Google Business Profile, referenced by their live Google-hosted URLs. Every
 // one is the cafe's own room, own food, own coffee. No stock, no grey boxes.
@@ -116,7 +116,7 @@ export const facts = {
   address: "Vosstraat 2, 2140 Borgerhout (Antwerpen)",
   phone: "0468 46 19 16",
   phoneHref: "tel:+32468461916",
-  mapsQuery: "Cafe Josee, Vosstraat 2, 2140 Antwerpen",
+  mapsQuery: "Café Josee, Vosstraat 2, 2140 Antwerpen",
   hours: [
     { label: "Maandag", value: "08.45 tot 16.30" },
     { label: "Dinsdag", value: "08.45 tot 16.30" },

@@ -16,10 +16,10 @@ export function Home() {
           Koffie, ontbijt en lunch <Em>op de hoek van de Vosstraat</Em>.
         </PageTitle>
         <Lead>
-          Cafe Josee staat op de hoek van de Vosstraat en de Gitschotellei, met het park aan de
+          Café Josee staat op de hoek van de Vosstraat en de Gitschotellei, met het park aan de
           overkant. Binnen staat de keuken open in de zaal, hangen er planten voor de ramen en
           staat er werk van buurtkunstenaars aan de muur. <Em>En sinds 14 augustus gaan de deuren
-          op vrijdag en zaterdag ook s avonds open.</Em>
+          op vrijdag en zaterdag ook in de avond open.</Em>
         </Lead>
         <div className="actions" style={{ marginTop: 26 }}>
           <Btn href="/drankkaart">Bekijk de kaart</Btn>
@@ -66,12 +66,12 @@ export function Home() {
         <Eyebrow>De zaal</Eyebrow>
         <SecTitle>Een open keuken, planten en wisselend werk aan de muur.</SecTitle>
         <Lead>
-          Josee is een buurtcafe voor de buurt: gezinnen, mensen die alleen komen werken, mensen die
+          Josee is een buurtcafé voor de buurt: gezinnen, mensen die alleen komen werken, mensen die
           na het park binnenvallen. Aan de muur hangt werk van kunstenaars uit de buurt, en dat
           wisselt. Er wordt niet gereserveerd, je komt gewoon binnen.
         </Lead>
         <div className="grid grid-2" style={{ marginTop: 30 }}>
-          <MediaCard image={photos.interior} alt="De zaal van Cafe Josee met de open keuken en planten"
+          <MediaCard image={photos.interior} alt="De zaal van Café Josee met de open keuken en planten"
             title="Binnen" body="De toog en de open keuken lopen door de zaal, met grote ramen naar de straat." />
           <MediaCard image={photos.counter} alt="De toog met open rekken en serviesgoed"
             title="Aan de toog" body="Open rekken, serviesgoed op de plank, alles in het zicht." />
@@ -85,7 +85,7 @@ export function Home() {
         <div style={{ marginTop: 26, maxWidth: 560 }}>
           <Hours
             rows={facts.hours}
-            note="Donderdag is de sluitingsdag. Deze uren komen uit het publieke Google-profiel van het cafe en uit hun eigen Instagram, en zijn nog niet met de zaak bevestigd."
+            note="Donderdag is de sluitingsdag. Deze uren komen uit het publieke Google-profiel van het café en uit hun eigen Instagram, en zijn nog niet met de zaak bevestigd."
           />
         </div>
         <div className="actions" style={{ marginTop: 26 }}>

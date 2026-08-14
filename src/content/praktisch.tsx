@@ -32,7 +32,7 @@ export function Praktisch() {
             <div style={{ marginTop: 20 }}>
               <Hours
                 rows={facts.hours}
-                note="Deze uren komen uit het publieke Google-profiel van het cafe en uit hun eigen Instagram, die met elkaar overeenkomen. Ze zijn nog niet met de zaak bevestigd. De avonduren op vrijdag en zaterdag lopen sinds 14 augustus 2026."
+                note="Deze uren komen uit het publieke Google-profiel van het café en uit hun eigen Instagram, die met elkaar overeenkomen. Ze zijn nog niet met de zaak bevestigd. De avonduren op vrijdag en zaterdag lopen sinds 14 augustus 2026."
               />
             </div>
           </div>
@@ -41,7 +41,7 @@ export function Praktisch() {
             <div style={{ marginTop: 20 }}>
               <Map
                 query={facts.mapsQuery}
-                label="Cafe Josee, Vosstraat 2, Borgerhout"
+                label="Café Josee, Vosstraat 2, Borgerhout"
                 caption="Op de hoek van de Vosstraat en de Gitschotellei"
                 cta="Toon de kaart"
               />

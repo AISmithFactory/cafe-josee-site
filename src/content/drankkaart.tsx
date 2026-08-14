@@ -1,6 +1,6 @@
 // content/drankkaart.tsx -- the drinks card, BUILT into a route (build-agent S5:
 // a page sourced from a capture is built, never linked out). Every line and every
-// price is read from the drinks card Cafe Josee publishes on its own Google profile.
+// price is read from the drinks card Café Josee publishes on its own Google profile.
 import * as React from "react";
 import { PageTitle, Section, Band, SecTitle, Eyebrow, Lead, Em, Btn } from "../components/spine";
 import { photos, facts } from "./site.config";
@@ -108,17 +108,17 @@ export function Drankkaart() {
         <Eyebrow>De kaart zoals ze aan tafel ligt</Eyebrow>
         <SecTitle>Overgenomen van hun eigen drankkaart.</SecTitle>
         <Lead>
-          Deze prijzen zijn overgenomen van de drankkaart die het cafe zelf publiceert. Ze zijn nog
+          Deze prijzen zijn overgenomen van de drankkaart die het café zelf publiceert. Ze zijn nog
           niet met de zaak nagekeken, dus zie ze als de kaart van dat moment.
         </Lead>
         <div style={{ marginTop: 26, maxWidth: 420 }}>
-          <img src={photos.kaart} alt="De gedrukte drankkaart van Cafe Josee"
+          <img src={photos.kaart} alt="De gedrukte drankkaart van Café Josee"
             style={{ width: "100%", height: "auto", borderRadius: "var(--radius)", boxShadow: "var(--shadow)" }} />
         </div>
       </Section>
 
       <Band tone="dark"
-        heading="En s avonds staat de spritz klaar."
+        heading="En in de avond staat de spritz klaar."
         sub="Op vrijdag en zaterdag van 17.00 tot 23.00 uur, met borrelhapjes en huisgemaakte dipjes."
         actions={<>
           <Btn href="/apero">Naar de apero</Btn>

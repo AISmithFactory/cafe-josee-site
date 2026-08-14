@@ -10,12 +10,12 @@ import { nav, footerColumns, socials, legal, seo, facts } from "../content/site.
 import "../styles/tokens.css";
 import "../styles/spine.css";
 
-// The real mark, extracted from the card Cafe Josee publishes as its own profile image:
+// The real mark, extracted from the card Café Josee publishes as its own profile image:
 // two teal cups over a green dome. Keyed off the printed card ground so it sits on any tone.
 const Logo = (
   <span className="logo-lockup" style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
     <img src="/cafe-josee-mark.png" alt="" width={26} height={34} style={{ display: "block" }} />
-    <span>Cafe Josee</span>
+    <span>Café Josee</span>
   </span>
 );
 
@@ -60,9 +60,9 @@ function RootLayout() {
 export const Route = createRootRoute({
   head: () => ({
     meta: [
-      { title: "Cafe Josee, buurtbar in Borgerhout" },
+      { title: "Café Josee, buurtbar in Borgerhout" },
       { name: "description", content: "Koffie, ontbijt, lunch en taart aan het Te Boelaerpark. Sinds kort ook apero op vrijdag en zaterdag." },
-      { property: "og:title", content: "Cafe Josee" },
+      { property: "og:title", content: "Café Josee" },
       { property: "og:description", content: "Buurtbar met koffie, brunch, lunch, taart en apero aan het Te Boelaerpark." },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "nl_BE" },

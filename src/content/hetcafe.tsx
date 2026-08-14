@@ -10,10 +10,10 @@ export function HetCafe() {
   return (
     <main id="main">
       <Section tone="paper" pad="lg">
-        <Eyebrow>Het cafe</Eyebrow>
+        <Eyebrow>Het café</Eyebrow>
         <PageTitle>Een buurtbar op de hoek, met het park aan de overkant.</PageTitle>
         <Lead>
-          Cafe Josee staat waar de Vosstraat op de Gitschotellei uitkomt, aan de rand van het Te
+          Café Josee staat waar de Vosstraat op de Gitschotellei uitkomt, aan de rand van het Te
           Boelaerpark. <Em>Het is een van de eerste nieuwe adressen van de Boelaerbuurt geweest,</Em>
           in de jaren dat die buurt weer begon te leven.
         </Lead>
@@ -61,7 +61,7 @@ export function HetCafe() {
         <Eyebrow>Wat er nog gebeurt</Eyebrow>
         <SecTitle>Een loopgroep, kadobonnen en de feestdagen.</SecTitle>
         <Lead>
-          Het cafe is vertrekpunt geweest voor een loop door de buurt, verkoopt kadobonnen in
+          Het café is vertrekpunt geweest voor een loop door de buurt, verkoopt kadobonnen in
           een bedrag naar keuze, en houdt de deuren open in de schoolvakanties en op de meeste
           feestdagen. Wat er loopt, staat op hun Instagram.
         </Lead>

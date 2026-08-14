@@ -6,7 +6,7 @@ import { privacy } from "../content/site.config";
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
-      { title: "Privacyverklaring, Cafe Josee" },
+      { title: "Privacyverklaring, Café Josee" },
       { name: "description", content: "Hoe deze site met je gegevens omgaat." },
     ],
   }),

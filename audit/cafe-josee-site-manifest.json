@@ -1,0 +1,217 @@
+{
+  "site": "cafe-josee-site",
+  "audited_at": "2026-09-06",
+  "contract_version": "1.8.25",
+  "factory_sha": "8f9ea2693cc8d946d74ba5c89f2dad73126dcfbd",
+  "repo_sha": "2069da46ee322a7a88b24fd0a622d78fcdb3b370",
+  "audit_pass": "first full S1-S10 walk; this repo held no canon.json, no audit/ and no manifest before this pass",
+  "stack": "tanstack-start-ssr",
+  "separate_app_from_hub": true,
+  "skin": {
+    "tokens_complete": true,
+    "semantic_only": true,
+    "aa_pairs_pass": true,
+    "raw_hex_in_components": [],
+    "hue_slots_declared": [],
+    "contrast_matrix": {
+      "method": "regenerated from src/styles/tokens.css at repo_sha; every text token x every ground the spine tone map can resolve it on; rgba inks composited over the opaque ground before measuring; thresholds 4.5 normal / 3.0 large",
+      "grounds": {
+        "--bg": "#FBF8EF",
+        "--bg-alt": "#EBE7D6",
+        "--surface": "#FFFFFF",
+        "--surface-warm": "#F5F1E4",
+        "--dark": "#123531",
+        "--dark-alt": "#12504C",
+        "--accent": "#0F94A5"
+      },
+      "cells": [
+        { "ink": "--text", "ground": "--bg", "ratio": 13.27, "verdict": "PASS" },
+        { "ink": "--text", "ground": "--bg-alt", "ratio": 11.36, "verdict": "PASS" },
+        { "ink": "--text", "ground": "--surface", "ratio": 14.09, "verdict": "PASS" },
+        { "ink": "--text", "ground": "--surface-warm", "ratio": 12.47, "verdict": "PASS" },
+        { "ink": "--text-soft", "ground": "--bg", "ratio": 6.78, "verdict": "PASS" },
+        { "ink": "--text-soft", "ground": "--bg-alt", "ratio": 5.80, "verdict": "PASS" },
+        { "ink": "--text-soft", "ground": "--surface", "ratio": 7.19, "verdict": "PASS" },
+        { "ink": "--text-soft", "ground": "--surface-warm", "ratio": 6.37, "verdict": "PASS" },
+        { "ink": "--accent-text", "ground": "--bg", "ratio": 6.61, "verdict": "PASS" },
+        { "ink": "--accent-text", "ground": "--bg-alt", "ratio": 5.66, "verdict": "PASS" },
+        { "ink": "--accent-text", "ground": "--surface", "ratio": 7.01, "verdict": "PASS" },
+        { "ink": "--accent-text", "ground": "--surface-warm", "ratio": 6.21, "verdict": "PASS" },
+        { "ink": "--accent-on-dark", "ground": "--dark", "ratio": 7.93, "verdict": "PASS" },
+        { "ink": "--accent-on-dark", "ground": "--dark-alt", "ratio": 5.50, "verdict": "PASS" },
+        { "ink": "--on-dark", "ground": "--dark", "ratio": 12.08, "verdict": "PASS" },
+        { "ink": "--on-dark", "ground": "--dark-alt", "ratio": 8.37, "verdict": "PASS" },
+        { "ink": "--on-dark", "ground": "--accent", "ratio": 3.29, "verdict": "LARGE-ONLY, UNREACHED (no section declares tone=accent)" },
+        { "ink": "--on-dark-soft (rgba .82 composited)", "ground": "--dark", "ratio": 8.66, "verdict": "PASS" },
+        { "ink": "--on-dark-soft (rgba .82 composited)", "ground": "--dark-alt", "ratio": 6.20, "verdict": "PASS" },
+        { "ink": "--on-dark-soft (rgba .82 composited)", "ground": "--accent", "ratio": 2.69, "verdict": "SUB-3.0, UNREACHED (no section declares tone=accent)" }
+      ],
+      "tones_used_by_this_site": ["paper", "surface", "alt", "dark", "slate"],
+      "tones_unused": ["accent"],
+      "note": "the two sub-4.5 cells are both on the accent tone, which this site never declares. S2.3 permits accent-as-ground for large display only; the site satisfies the row by carrying no accent-tone section at all. The charter's own matrix carries 15 pairs and agrees with this regeneration cell for cell; this regeneration adds five it omits (--text/--text-soft/--accent-text on --surface-warm, and --on-dark-soft composited on --dark and --dark-alt), all passing."
+    }
+  },
+  "data_posture": "no-db",
+  "site_supabase": "shared-functions",
+  "builder_backend_provisioned": false,
+  "read_pipe": {
+    "present": false,
+    "doorway": "",
+    "fields": [],
+    "bridge_declared": false,
+    "rls_on_view": null
+  },
+  "secrets_writes": {
+    "secret_in_bundle": false,
+    "writes_to_foreign_system": false,
+    "service_role_present": false,
+    "method": "grep of src/, public/, netlify.toml and package.json for service_role, anon key, API_KEY and JWT-shaped literals: 0 hits. The only outbound POST is site.config.tsx:19 to the shared AISmith-functions contact fn; the destination resolves server-side from the origin map and never travels in the body."
+  },
+  "components": {
+    "core_present": ["SiteHeader", "SiteFooter", "SkipLink", "Wrap", "Section", "Band", "PageTitle", "Display", "SecTitle", "Eyebrow", "Lead", "Em", "Btn", "MediaCard", "TierCard", "EventCard", "StatCard", "InfoCard", "ContactForm", "NewsletterForm", "PrivacyNotice", "Crumb"],
+    "core_missing": [],
+    "optional_enabled": ["Hours", "Map"],
+    "optional_present_but_unimported": ["audio", "deco", "gallery", "marquee", "tiles", "timeline", "video"],
+    "bespoke_css_found": [],
+    "inline_type_in_compositions": 0,
+    "note": "src/content and src/routes carry ZERO inline font-size, fontSize or clamp. The S3.2a defect that aismith-site and zuidgeluid-site each reinvented independently is absent here. Every spine file is byte-identical to the seed at the charter-pinned sha (25 files, verify.mjs [1])."
+  },
+  "seo_a11y": {
+    "per_route_meta": true,
+    "sitemap": true,
+    "ssr_content": true,
+    "wcag_aa": null,
+    "lighthouse": null,
+    "method": "per-route head() on all 6 content routes with unique titles (verify [4]); public/sitemap.xml carries the same 6 URLs; SSR confirmed by fetching the DEPLOYED page at https://cafe-josee.demos.aismith.io/, which returns the full rendered copy rather than an empty root div; lang=\"nl\" hard-set in __root.tsx:24; skip-link renders on the deployed page. Lighthouse NOT measured this pass: the repo ships no Lighthouse workflow and no report exists."
+  },
+  "voice": {
+    "prose_em_dashes": 0,
+    "superlatives": [],
+    "register_declared": true,
+    "matches_register": true,
+    "method": "grep of src/content and src/routes: 0 em-dashes (literal or entity). The single em-dash under src/components is inside a JSDoc block in primitives.tsx:24 and is exempt under S9.4. Register declared in charter section 1 as plain, warm, local, short sentences, no hospitality marketing register; the rendered copy matches."
+  },
+  "content_model": "static-in-repo",
+  "host": "netlify",
+  "noindex": true,
+  "deploy_target": "netlify",
+  "server_runtime": "supabase-edge-functions",
+  "transfer_unit_clean": true,
+  "source": "owned-fleet",
+  "findings": {
+    "gate_fail": [],
+    "important_fail": [
+      {
+        "id": "S7.4a",
+        "finding": "The rendered privacy notice describes a newsletter this site does not run. /privacy carries \"Nieuwsbrief. Schrijf je je in, dan verwerken we je e-mailadres om je de nieuwsbrief te sturen\" and the Rechtsgrond paragraph names \"je toestemming (nieuwsbrief, kaart)\", while site.config.tsx:20 sets newsletterAction to the empty string and the footer mounts no NewsletterForm. The clause is UNGATED in the spine: legal.tsx renders <li>{t.dNews}</li> with no condition, unlike the map clause beside it which is gated on mapsEmbed. This is the exact mirror of the 1.8.11 finding that produced S7.4a: there the notice UNDERSTATED what a shipped form collects, here it describes processing that does not occur at all. S7.4a's own words, that the notice and the form must not carry opposite defaults for one fact, reach both directions. SPINE DEFECT, not a site defect: legal.tsx is byte-identical to the seed at the pinned sha and this lane fixes no spine file.",
+        "first_seen": "2026-09-06",
+        "evidence_run": "deployed page https://cafe-josee.demos.aismith.io/privacy fetched 2026-09-06 18:16Z; src/components/spine/legal.tsx render block and site.config.tsx:20 at 2069da46"
+      },
+      {
+        "id": "S7.4",
+        "finding": "The subprocessor list omits two Google transfers that happen on page load. The notice names Google only as \"Google Maps: kaartweergave, laadt pas na een klik\", which tells the visitor Google receives their IP only after a click. On the deployed page it receives it twice before any click: __root.tsx links a stylesheet from fonts.googleapis.com (with a preconnect), and every route renders photography from lh3.googleusercontent.com (site.config.tsx:100, seven assets). S7.4 requires the notice to reflect the site's ACTUAL data flows rather than boilerplate. The fonts link is permitted by S2.4 and the photo sourcing is declared in charter review item 11, so the defect is the notice's silence, not the requests.",
+        "first_seen": "2026-09-06",
+        "evidence_run": "deployed pages / and /privacy fetched 2026-09-06 18:16Z; src/routes/__root.tsx links block and src/content/site.config.tsx:100 at 2069da46"
+      }
+    ],
+    "additive_fail": [
+      {
+        "id": "S8.4",
+        "finding": "functions/newsletter.ts ships in the repo against a charter that declares \"Newsletter: off\", and it carries the seed's origin rather than this site's: ALLOWED_ORIGIN is hardcoded to https://aismith.io at line 7. Its own header comment says it is unmounted in the concept build. Nothing in the front end references it and it is absent from the charter's section 10 transfer unit, which names only the contact function. Docs-versus-deploy divergence in the gentler direction: an artefact shipped and undeclared rather than declared and unwired.",
+        "first_seen": "2026-09-06",
+        "evidence_run": "functions/newsletter.ts:7 and charter sections 7 and 10 at 2069da46"
+      },
+      {
+        "id": "S7.2",
+        "finding": "The skip-link renders the English string \"Skip to content\" on a page whose shell hard-sets lang=\"nl\". A screen reader announcing it under the declared document language reads English words as Dutch. SPINE-SUPPLIED and hardcoded: chrome.tsx:10 returns the literal with no lang branch and no prop, so no site can correct it from its own layer. Raised rather than fixed.",
+        "first_seen": "2026-09-06",
+        "evidence_run": "deployed pages / and /privacy fetched 2026-09-06 18:16Z; src/components/spine/chrome.tsx:10 at 2069da46"
+      },
+      {
+        "id": "S7.1",
+        "finding": "No og:image ships. Declared in charter section 9 and review item 14 as a go-live item, so this is a known and dated gap rather than an omission.",
+        "first_seen": "2026-09-06",
+        "evidence_run": "src/routes/__root.tsx head() at 2069da46"
+      },
+      {
+        "id": "S7.3",
+        "finding": "Lighthouse NOT MEASURED. The repo ships no Lighthouse workflow and no report exists, so this row has no operand this pass. Recorded as unmeasured rather than scored, because a row reported PASS on no measurement is worse than an open one.",
+        "first_seen": "2026-09-06",
+        "evidence_run": ".github/workflows/ holds site-verify.yml only, at 2069da46"
+      }
+    ],
+    "partial": [
+      {
+        "id": "S7.4",
+        "finding": "legal.controller, at site-contract 1.8.25, is written by the AUDIT at GO-LIVE from the intake record. This surface is not at go-live: seo.noindex is true, the charter calls it a prospect DEMO concept and not a working client, and no intake record has been reconciled into a controller block. site.config.tsx:84 nonetheless already carries a build-time answer, controller name \"Café Josee\" with email contact@aismith.io, which is the AI Smith catch-all rather than the controller's own address, and the deployed notice uses it both as the controller contact and as the address for exercising data-subject rights. So this audit does NOT write legal.controller and the manifest legal block below omits it deliberately. PARTIAL is the expected reading until go-live, and the build-time answer is the third instance of the pattern 1.8.25 was cut for.",
+        "first_seen": "2026-09-06",
+        "evidence_run": "schemas/manifest.schema.json legal description at 8f9ea269; src/content/site.config.tsx:84 and deployed /privacy at 2069da46"
+      },
+      {
+        "id": "S3.2a",
+        "finding": "ADDITIVE at 1.8.25 and GATE at 1.9.0. The site itself introduces nothing: zero inline type in src/content and src/routes. But it inherits the spine's scoped roles unchanged from the pinned seed, and S3.2a's own note says its role inventory is PROVISIONAL and known to undercount. So the row is satisfied at the instance layer and open at the spine layer, and this surface cannot close the spine half.",
+        "first_seen": "2026-09-06",
+        "evidence_run": "grep of src/content and src/routes for fontSize, font-size and clamp: 0 hits at 2069da46"
+      }
+    ],
+    "not_applicable": [
+      { "id": "S4.6", "finding": "No --hue-N slots declared. tokens.css states the reason: a two-ink brand already carried by --accent and --highlight, with the coral belonging to the mark rather than to a section ground. The mechanism is inert and the hue arm of the S2.3 matrix is empty rather than skipped.", "first_seen": "2026-09-06", "evidence_run": "src/styles/tokens.css OPTIONAL slots block at 2069da46" },
+      { "id": "S5.2", "finding": "No DB and no hub read-pipe declared or present.", "first_seen": "2026-09-06", "evidence_run": "grep of src/ for supabase-js, createClient and REST paths: 0 hits at 2069da46" },
+      { "id": "S6.4", "finding": "S5.2 does not apply, so there is no doorway to check.", "first_seen": "2026-09-06", "evidence_run": "as above" },
+      { "id": "S10.0", "finding": "No S10 pipe declared and none present: no build-time fetch, no committed feed snapshot, no scripts/ directory. S10.0 through S10.6 are all N/A on this surface.", "first_seen": "2026-09-06", "evidence_run": "grep of src/ for feed and snapshot paths: 0 hits; no scripts/ at 2069da46" }
+    ],
+    "closed_by_this_pass": [],
+    "raised_to_factory": [
+      {
+        "id": "S7.4a",
+        "finding": "SPINE FIX OWED, fleet-wide. legal.tsx renders the newsletter processing clause unconditionally and the Rechtsgrond sentence names nieuwsbrief unconditionally, so every site on the spine that does NOT run a newsletter publishes a notice describing processing it does not perform. The map clause one line above is already gated on mapsEmbed, so the shape of the fix exists in the same file. Suggested seam: a newsletter boolean on PrivacyNotice, defaulted from whether a NewsletterForm is mounted, with the basis sentence composed from the same flags. This is the S7.4a rule applied in the direction 1.8.11 did not walk.",
+        "first_seen": "2026-09-06",
+        "evidence_run": "src/components/spine/legal.tsx (NL dNews and basis, EN dNews and basis) at seed d719e03b, byte-identical in this repo"
+      },
+      {
+        "id": "S7.2",
+        "finding": "SPINE FIX OWED. chrome.tsx:10 hardcodes the English skip-link string with no lang branch and no prop, on a spine whose declared fleet languages are NL and EN and whose PrivacyNotice already takes a lang prop. Every nl site in the fleet ships it.",
+        "first_seen": "2026-09-06",
+        "evidence_run": "src/components/spine/chrome.tsx:10 at seed d719e03b, byte-identical in this repo"
+      },
+      {
+        "id": "S8.5",
+        "finding": "THE SEED PIN IS EIGHT COMMITS BEHIND SEED MAIN AND THE FACTORY WORKING COPY IS A THIRD DISTINCT FILE. verify.mjs sha256 measured three ways today: this repo and seed at the charter-pinned d719e03b both b64cfced, seed main c340b9b0 is 6e2a04c5, Factory agents/audit/site/verify.mjs at 8f9ea269 is 8843e4bb. S8.5 says a site holding the older checker is CONFORMANT to the contract it can actually run and that the gap is the Factory's finding, never the site's, and it forbids the site closing it by copying the Factory file. So this is raised, not fixed. The eight unpinned seed commits include #19, which its subject line says makes the AA matrix see rgba and the hue block: that is precisely the S2.3 arm this audit had to regenerate by hand because the pinned checker does not cover it.",
+        "first_seen": "2026-09-06",
+        "evidence_run": "sha256sum across cafe-josee-site 2069da46, aismith-site-seed d719e03b and c340b9b0, and AISmith-Factory 8f9ea269, all taken 2026-09-06 18:1xZ"
+      },
+      {
+        "id": "S3.2",
+        "finding": "RULE COLLISION, reported rather than resolved. Site-contract 1.8.25 widens S3.2 so that its denominator is EVERY stylesheet the site ships that is not spine.css, read whole, with a type declaration in one scored here. Read literally that population includes the co-located module stylesheets that S3.3 REQUIRES each module to ship, and hours.css and map.css, the two this site imports, each declare type. Scored PASS on the reading that bespoke means authored for this site: all nine module stylesheets are byte-identical to the pinned seed and are frozen-layer spine, and the worked instances 1.8.25 names (skin-showcase.css, graphics.css, styles.css) are all site-authored. If that reading is wrong, every site in the fleet fails S3.2 by construction the moment it enables one module. The boundary is worth one sentence in the row.",
+        "first_seen": "2026-09-06",
+        "evidence_run": "as-site-spine-standard.md S3.2 at 8f9ea269 against src/components/spine/modules/*.css, all byte-identical to seed d719e03b"
+      }
+    ]
+  },
+  "variance_noted": [
+    ".github/workflows/site-verify.yml is NOT byte-identical to the declared 510737fd: measured be5b3ede. The whole difference is the two per-site blanks the template exists to have filled, SEED_REF set to d719e03b and CHARTER set to cafe-josee-site-charter.md, landed by this repo's PR #1. dist/site-contract/contract.json at 8f9ea269 declares this file a FILL-IN TEMPLATE and states that a sha mismatch here is the surface having done its job and is a declared-variance question rather than drift. So this row is a DECLARED VARIANCE, not drift, and the wave brief's characterisation of it is corrected here rather than repeated.",
+    "canon.json canon_version is written 0.25, the version as-canon-spine-standard.md carries at 8f9ea269, rather than the 0.13 every sibling declaration in the fleet still carries. The field records the standard version a declaration was WRITTEN AGAINST and this one is written today, so 0.13 would be a false record. canon-version-check.py refuses to run on a non-control-plane declaration by design and does not gate this; the ruled rule for the rest of the fleet is report the age, never gate.",
+    "manifest.schema.json is VENDORED AT THE BARE REPO ROOT. No file of that basename was held anywhere in the tree, which the brief's row 3 anticipates. Rows 1 and 2 name directories (contract/ and schema/) and row 3 says the bare root, read here as the repository root itself rather than a bare schema/ directory. Stated so the controller can move it with one command if the other reading was meant.",
+    "The optional module set ships nine modules in the tree and imports two, Hours and Map, exactly as the charter declares. Seven module files are present but unimported, so neither their JS nor their CSS reaches the bundle, which is the S3.3 barrel discipline working rather than dead weight.",
+    "netlify.toml's build comment says all 8 routes prerendered; there are 6. Seed comment residue, no behavioural effect, vite.config.ts lists the correct 6."
+  ],
+  "backup": {
+    "managed_pitr": null,
+    "status": "unverified",
+    "note": "no-db surface: nothing is stored, so there is no data backup surface to drill. The repo is the content. Recorded null and unverified rather than green, which would claim a drill nobody ran."
+  },
+  "legal": {
+    "subprocessors": [
+      { "name": "Netlify", "purpose": "hosting en serverlogs", "location": "EU/VS", "link": "https://www.netlify.com/privacy/" },
+      { "name": "Resend", "purpose": "verzenden van het contactformulier, via de gedeelde contact functie", "location": "EU/VS", "link": "https://resend.com/legal/privacy-policy" },
+      { "name": "Google Maps", "purpose": "kaartweergave op /praktisch, laadt pas na een klik", "location": "EU/VS", "link": "https://policies.google.com/privacy" },
+      { "name": "Google Fonts", "purpose": "weergave van de lettertypes, laadt bij het openen van elke pagina", "location": "EU/VS", "link": "https://policies.google.com/privacy" },
+      { "name": "Google (googleusercontent)", "purpose": "hosting van de fotografie van het cafe, laadt bij het openen van elke pagina", "location": "EU/VS", "link": "https://policies.google.com/privacy" }
+    ],
+    "privacy_effective": "14 augustus 2026",
+    "maps_embed": true,
+    "lang": "nl",
+    "controller_note": "legal.controller is DELIBERATELY ABSENT. At site-contract 1.8.25 the audit writes it at GO-LIVE from the intake record; this surface is a prospect demo with seo.noindex true and no reconciled intake record, so the moment has not arrived and writing it here would manufacture the provenance the 1.8.25 cut exists to require. The two subprocessors added above the site's own three are the S7.4 important finding stated as data rather than only as prose."
+  },
+  "verdict": "CONFORMANT, no gate fails. First full S1-S10 walk of this surface. Every gate row passes: separate app (S1.2), token discipline with zero raw colour outside tokens.css (S2.2), the full regenerated contrast matrix clear on every ground the site reaches (S2.3), no-db with no DB client and no provisioned backend (S5.1, S5.4), no secret and no foreign write (S6.1 to S6.3), charter and repo routes reconciling both ways (S8.4a), the pinned checker held rather than copied (S8.5), zero prose em-dashes (S9.1). Two IMPORTANT findings, both on the privacy notice and both first proved on the deployed page: it describes a newsletter that does not exist, and it omits two Google transfers that happen before any click. The first is a spine defect this lane is barred from fixing and is raised to the Factory. Four raises to the Factory in total, including a verify.mjs pin eight commits behind the seed and a 1.8.25 S3.2 wording that, read literally, fails every site in the fleet the moment it enables a module."
+}

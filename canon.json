@@ -1,0 +1,19 @@
+{
+  "canon_version": "0.25",
+  "class": "product",
+  "repo": "AISmithFactory/cafe-josee-site",
+  "slug": "cafe-josee-site",
+  "entity": "Cafe Josee",
+  "archetype": "site",
+  "canon": "AISmithFactory/cafe-josee-site",
+  "authority": "none",
+  "charter_in_repo": "cafe-josee-site-charter.md",
+  "holds": [
+    {
+      "contract": "site-contract",
+      "version": "1.8.25",
+      "stamped": "2026-09-06",
+      "factory_sha": "8f9ea2693cc8d946d74ba5c89f2dad73126dcfbd"
+    }
+  ]
+}

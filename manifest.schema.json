@@ -1,0 +1,374 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/aIsmith100/AISmith-Factory/schemas/manifest.schema.json",
+  "title": "AI Smith fleet manifest (<slug>-manifest.json)",
+  "description": "Emitted by an audit prompt (as-site-audit-prompt.md / as-hub-spine-audit-prompt.md), copied to AISmith-Factory/manifests/, and diffed by as-fleet-reconciliation.md. The audit prompt is the source of truth for the format; site and hub audits share this base and each adds its own conformance detail (skin/components/seo_a11y/voice for sites; the C-contracts for hubs).",
+  "type": "object",
+  "required": [
+    "site",
+    "audited_at",
+    "host",
+    "noindex",
+    "findings",
+    "verdict"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "site": {
+      "type": "string",
+      "description": "the project slug, e.g. cafe-kamiel"
+    },
+    "audited_at": {
+      "type": "string",
+      "description": "audit date -- the staleness signal"
+    },
+    "contract_version": {
+      "type": "string",
+      "description": "the dist/<contract>/contract.json version this build was stamped against (canon-pointer). RECOMMENDED -- add to the audit output so drift is detectable."
+    },
+    "stack": {
+      "type": "string"
+    },
+    "host": {
+      "type": "string"
+    },
+    "noindex": {
+      "type": "boolean"
+    },
+    "data_posture": {
+      "type": "string"
+    },
+    "site_supabase": {
+      "type": "string"
+    },
+    "server_runtime": {
+      "type": "string"
+    },
+    "findings": {
+      "type": "object",
+      "required": [
+        "gate_fail",
+        "important_fail",
+        "additive_fail"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "gate_fail": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "finding"
+            ],
+            "additionalProperties": true,
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "the rubric row, e.g. 'S6.2'. Stable across passes."
+              },
+              "finding": {
+                "type": "string"
+              },
+              "first_seen": {
+                "type": "string"
+              },
+              "evidence_run": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "important_fail": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "finding"
+            ],
+            "additionalProperties": true,
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "the rubric row, e.g. 'S6.2'. Stable across passes."
+              },
+              "finding": {
+                "type": "string"
+              },
+              "first_seen": {
+                "type": "string"
+              },
+              "evidence_run": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "additive_fail": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "finding"
+            ],
+            "additionalProperties": true,
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "the rubric row, e.g. 'S6.2'. Stable across passes."
+              },
+              "finding": {
+                "type": "string"
+              },
+              "first_seen": {
+                "type": "string"
+              },
+              "evidence_run": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "closed_by_this_pass": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "finding"
+            ],
+            "additionalProperties": true,
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "the rubric row, e.g. 'S6.2'. Stable across passes."
+              },
+              "finding": {
+                "type": "string"
+              },
+              "first_seen": {
+                "type": "string"
+              },
+              "evidence_run": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "not_applicable": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "finding"
+            ],
+            "additionalProperties": true,
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "the rubric row, e.g. 'S6.2'. Stable across passes."
+              },
+              "finding": {
+                "type": "string"
+              },
+              "first_seen": {
+                "type": "string"
+              },
+              "evidence_run": {
+                "type": "string"
+              }
+            }
+          },
+          "description": "rows that do not apply to this surface, with the reason. NOT a pass and NOT a fail."
+        },
+        "partial": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "finding"
+            ],
+            "additionalProperties": true,
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "the rubric row, e.g. 'S6.2'. Stable across passes."
+              },
+              "finding": {
+                "type": "string"
+              },
+              "first_seen": {
+                "type": "string"
+              },
+              "evidence_run": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "raised_to_factory": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "finding"
+            ],
+            "additionalProperties": true,
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "the rubric row, e.g. 'S6.2'. Stable across passes."
+              },
+              "finding": {
+                "type": "string"
+              },
+              "first_seen": {
+                "type": "string"
+              },
+              "evidence_run": {
+                "type": "string"
+              }
+            }
+          },
+          "description": "outbound asks to the Factory, read at reconcile."
+        }
+      },
+      "description": "site S-contract verdict. Required buckets are arrays of {id, finding} objects as of site-contract 1.8.7. OPENED at 1.8.7: it was additionalProperties:false and rejected `closed_by_this_pass` and `not_applicable`, both real audit outcomes -- N/A is a different answer from FAIL and needs somewhere to go. The hub schema has always allowed per-surface buckets; this was an inconsistency, not discipline."
+    },
+    "variance_noted": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "build-time deviations; a variance that recurs across builds is an up-path candidate (reconciliation bucket 4)"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "owned-fleet",
+        "certified",
+        "telemetry"
+      ],
+      "description": "manifest provenance discriminator (as-conformance-loop.md §7). Today every manifest is owned-fleet; forward-compat for trust-weighting external rows later."
+    },
+    "backup": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "backup & recovery posture (as-backup-recovery.md). Evidence behind the 'Your Hub, Your Data' guarantee; watched by Monitor.",
+      "properties": {
+        "last_backup_at": {
+          "type": "string",
+          "description": "ISO date of the most recent successful backup"
+        },
+        "retention_days": {
+          "type": "integer",
+          "description": "retention window in days (>=30 for production, per as-stack-blueprint.md)"
+        },
+        "managed_pitr": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "true/false once verified; NULL means NOT YET VERIFIED. Added at 1.8.7 -- crewden was emitting null honestly and failing the schema for it, which teaches a client to guess rather than say it does not know. Pair with backup.status."
+        },
+        "last_restore_test_at": {
+          "type": "string",
+          "description": "ISO date of the last GREEN restore drill into a throwaway target"
+        },
+        "rpo": {
+          "type": "string",
+          "description": "recovery point objective, e.g. '24h'"
+        },
+        "rto": {
+          "type": "string",
+          "description": "recovery time objective, e.g. '4h'"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "green",
+            "stale",
+            "unverified",
+            "red"
+          ],
+          "description": "Monitor-facing rollup"
+        }
+      }
+    },
+    "verdict": {
+      "type": "string"
+    },
+    "legal": {
+      "type": "object",
+      "description": "S7.4 privacy-notice source of truth. Drives site.config.privacy; must list the site's ACTUAL subprocessors, not boilerplate. WHO WRITES `legal.controller`, AND WHEN (site-contract 1.8.25): the AUDIT writes it AT GO-LIVE, FROM THE INTAKE RECORD, and that is the whole of the addition. The DIRECTION was already stated here and is not new: the manifest drives site.config.privacy, never the other way round. What nothing said was who fills the block or at what moment, which is why the field reaches one manifest of nine with no intake source and why two surfaces wrote their own answer.",
+      "properties": {
+        "controller": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "vatId": {
+              "type": "string"
+            },
+            "address": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "email"
+          ]
+        },
+        "subprocessors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "purpose": {
+                "type": "string"
+              },
+              "location": {
+                "type": "string"
+              },
+              "link": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "purpose"
+            ]
+          }
+        },
+        "privacy_effective": {
+          "type": "string",
+          "description": "effective date shown on the notice"
+        },
+        "maps_embed": {
+          "type": "boolean",
+          "description": "true if the Map module is enabled (adds the Google transfer clause)"
+        },
+        "lang": {
+          "type": "string",
+          "enum": [
+            "nl",
+            "en"
+          ],
+          "description": "site language for the privacy notice"
+        }
+      }
+    }
+  }
+}

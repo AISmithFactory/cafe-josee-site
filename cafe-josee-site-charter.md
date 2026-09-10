@@ -1,8 +1,20 @@
 # Cafe Josee, site charter
 
 **Slug** `cafe-josee` · **Repo** `AISmithFactory/cafe-josee-site` · **Built** 14 August 2026
-**Canon pointer** site-contract **1.8.18** (`dist/site-contract/contract.json`, read from the
-session reference cache at Factory main `e0d91cd`)
+**Canon pointer** site-contract **1.8.26** (`dist/site-contract/contract.json`, read at Factory
+main `362a3310f24258f38bd88132343ea43c0dedc383`). The DECLARATION is `canon.json` `holds[]`;
+this line is a pointer and was eight minors stale, reading 1.8.18 from Factory `e0d91cd`, until
+the 1.8.26 wave moved it. A pointer that disagrees with `holds[]` is the pointer's defect.
+**Spine pin** `aismith-site-seed` `768d726641bfdfeac0af5eaf894061faa19e215e`.
+**THIS LINE IS THE OPERAND OF `SEED_REF`** in `.github/workflows/site-verify.yml`, whose own
+comment reads *Pin to the sha the charter names, never a moving ref*, and which forbids `main`
+in terms. **THE LINE DID NOT EXIST BEFORE THE 1.8.26 WAVE**: the workflow pinned
+`d719e03b9d7b2b0b9859cc3c274458a91591121c` and the charter named no sha at all, so for the
+surface's whole life the gate's pin was authored nowhere and the phrase *charter-pinned*, used
+by the workflow, by `scripts/reconcile-pull.sh` and by the backlog row that raised this, had no
+referent. The pin was CREATED here rather than moved, and it is stated so rather than written
+as though it had always been here. `SCAFFOLD.md`'s `Cloned from ... at d719e03 on 14 August
+2026` is a RECORD of what this repo was forked from and does NOT move with the pin.
 **Scenario** intake Scenario 2, prospect DEMO concept. `noindex` on. Not a working client.
 
 This is the declaration the audit checks the repo against (build-agent S5, deliverable 2).
@@ -126,8 +138,20 @@ No table, no DB client in the bundle, nothing stored. `builder_backend_provision
 
 Controller: Cafe Josee. Enabled subprocessors, and only the enabled ones: **Netlify**
 (hosting and logs), **Resend** (contact form delivery, through the shared fn), **Google Maps**
-(the `/praktisch` facade, loads only on a click). Notice language `nl`. Concept marker in the
-footer: "Conceptsite door AI Smith, 2026."
+(the `/praktisch` facade, loads only on a click), **Google Fonts** (the display and body faces,
+loaded on every page view) and **Google Business Profile** (every photograph on the site,
+loaded on every page view). Notice language `nl`. **Newsletter off, so the notice ships
+`newsletter: false`** and carries no newsletter clause and no newsletter consent basis.
+Concept marker in the footer: "Conceptsite door AI Smith, 2026."
+
+**THE LAST TWO GOOGLE ROWS WERE MISSING FROM THIS SECTION AND FROM THE NOTICE, AND THE CLAUSE
+*and only the enabled ones* IS WHY THAT MATTERED.** `src/routes/__root.tsx` links a
+`fonts.googleapis.com` stylesheet with a preconnect and every route renders photography from
+`lh3.googleusercontent.com`, so Google receives the visitor's IP on page LOAD, twice, while the
+only Google row either document carried was a map facade described as loading *only on a
+click*. Raised as an S7.4 `important_fail` by the 2026-09-07 Trigger 2 reconcile, PROVED on the
+deployed page rather than on the tree, and discharged here and in `src/content/site.config.tsx`
+by the 1.8.26 wave. The map row keeps its click condition, which was never the false part.
 
 ## 9. Host, runtime, SEO
 

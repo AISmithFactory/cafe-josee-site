@@ -80,15 +80,37 @@ export const legal = "Café Josee, Vosstraat 2, 2140 Borgerhout. Conceptsite doo
 // Netlify hosts; the contact form posts to the shared AISmith-functions `contact` fn which
 // sends through Resend; the Praktisch page carries a Map facade that loads Google only on
 // a click.
+//
+// THREE GOOGLE TRANSFERS, NOT ONE, AND TWO OF THEM HAPPEN BEFORE ANY CLICK. Backlog row
+// `cafe-josee-site pins a seed verify.mjs eight commits behind seed main, and its privacy
+// notice omits two Google transfers that reach Google before any click` (S7.4
+// important_fail, raised by the 2026-09-07 Trigger 2 reconcile and proved on the DEPLOYED
+// page rather than on the tree): `src/routes/__root.tsx` links a stylesheet from
+// `fonts.googleapis.com` with a preconnect, and every route renders photography from
+// `lh3.googleusercontent.com` (the `gbp()` URLs below, seven assets), so Google receives the
+// visitor's IP TWICE on page load. The map facade was the only Google row the notice carried
+// and its `laadt pas na een klik` was therefore true of the map and false of the page. Both
+// load-time transfers are now named WITH THEIR TIMING, which is what makes the notice and
+// the page agree; the map row keeps its click condition and says which surface it is on.
+//
+// `newsletter: false` because the charter says so in terms (S7 Integrations,
+// `Newsletter: off.`) and this repo mounts no `NewsletterForm` anywhere. The spine's
+// `PrivacyNotice` defaults `newsletter` to TRUE, describing the fleet default site, so a
+// surface that ships no newsletter has to say so HERE or its notice claims a consent basis
+// and a data category it never collects. `withName` is not passed: it only shapes the
+// newsletter clause, which this site does not render.
 export const privacy = {
   controller: { name: "Café Josee", email: "contact@aismith.io" },
   subprocessors: [
     { name: "Netlify", purpose: "hosting en serverlogs", location: "EU/VS", link: "https://www.netlify.com/privacy/" },
     { name: "Resend", purpose: "verzenden van het contactformulier", location: "EU/VS", link: "https://resend.com/legal/privacy-policy" },
-    { name: "Google Maps", purpose: "kaartweergave, laadt pas na een klik", location: "EU/VS", link: "https://policies.google.com/privacy" },
+    { name: "Google Maps", purpose: "kaartweergave op Praktisch, laadt pas na een klik op de kaart", location: "EU/VS", link: "https://policies.google.com/privacy" },
+    { name: "Google Fonts", purpose: "de lettertypes van de site, geladen zodra je een pagina opent", location: "EU/VS", link: "https://policies.google.com/privacy" },
+    { name: "Google Bedrijfsprofiel", purpose: "de foto’s op de site staan op Google en worden geladen zodra je een pagina opent", location: "EU/VS", link: "https://policies.google.com/privacy" },
   ],
   effectiveDate: "14 augustus 2026",
   mapsEmbed: true,
+  newsletter: false,
   lang: "nl" as const,
 };
 

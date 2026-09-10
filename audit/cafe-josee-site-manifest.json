@@ -1,10 +1,10 @@
 {
   "site": "cafe-josee-site",
-  "audited_at": "2026-09-06",
-  "contract_version": "1.8.25",
-  "factory_sha": "8f9ea2693cc8d946d74ba5c89f2dad73126dcfbd",
-  "repo_sha": "2069da46ee322a7a88b24fd0a622d78fcdb3b370",
-  "audit_pass": "first full S1-S10 walk; this repo held no canon.json, no audit/ and no manifest before this pass",
+  "audited_at": "2026-09-10",
+  "contract_version": "1.8.26",
+  "factory_sha": "362a3310f24258f38bd88132343ea43c0dedc383",
+  "repo_sha": "2324fc6fa7eb5d49b72044ecb5fbefc7c587854c",
+  "audit_pass": "RE-AUDIT, not a carry-forward, and the whole reason it is one: the 1.8.25 manifest above declared site-contract 1.8.25 HELD while the tree held a PRE-1.8.24 spine. Four of the eight spine files differed from the 1.8.25 embed (spine.css by 146 changed lines, cards.tsx, chrome.tsx, legal.tsx), so every figure that declaration supported was a claim rather than a measurement. This pass re-vendors all eight files plus src/router.tsx and agents/site/verify.mjs VERBATIM from the seed at 768d726641bfdfeac0af5eaf894061faa19e215e and re-scores every clause against the resulting tree; nothing is inherited from the 1.8.25 row because the 1.8.25 row was about a different tree. repo_sha is the PR BASE, matching this surface's own precedent (the 1.8.25 manifest recorded 2069da46, its own base); the tree audited is that base plus this PR's diff, and the wave brief is prompts/dispatch/plan-site-1826-2026-09-10.md v1.1 lane S3c.",
   "stack": "tanstack-start-ssr",
   "separate_app_from_hub": true,
   "skin": {
@@ -14,7 +14,7 @@
     "raw_hex_in_components": [],
     "hue_slots_declared": [],
     "contrast_matrix": {
-      "method": "regenerated from src/styles/tokens.css at repo_sha; every text token x every ground the spine tone map can resolve it on; rgba inks composited over the opaque ground before measuring; thresholds 4.5 normal / 3.0 large",
+      "method": "UNCHANGED RATIOS, NEW INSTRUMENT, AND THE TWO NOW AGREE. src/styles/tokens.css is untouched by this pass, so every cell below carries the value the 2026-09-06 walk measured. What changed is who measured it: that walk had to regenerate this matrix BY HAND because the checker it could run (the seed pin at d719e03b, verify.mjs b64cfced) did not see rgba inks or the hue block, which is the S8.5 raise it filed. The re-vendored checker (6e2a04c5) derives the tone map from spine.css and reports 35 pairs derived, 16 asserted, 2 of the 16 with a translucent ink FLATTENED over its ground per the mapping profile's Rule B, 0 tokens unresolvable. Sixteen of the twenty hand cells below are now asserted mechanically and every one of the sixteen agrees to the second decimal, including the two rgba composites (8.66 and 6.20) the old checker could not see at all. The four hand cells the instrument does NOT assert are kept and are not padding: the four --surface-warm grounds are unreachable because no spine tone maps to --surface-warm, and the accent-tone cells are held at the 3.0 large-only threshold by the checker's own accent rule. thresholds 4.5 normal / 3.0 large.",
       "grounds": {
         "--bg": "#FBF8EF",
         "--bg-alt": "#EBE7D6",
@@ -25,30 +25,149 @@
         "--accent": "#0F94A5"
       },
       "cells": [
-        { "ink": "--text", "ground": "--bg", "ratio": 13.27, "verdict": "PASS" },
-        { "ink": "--text", "ground": "--bg-alt", "ratio": 11.36, "verdict": "PASS" },
-        { "ink": "--text", "ground": "--surface", "ratio": 14.09, "verdict": "PASS" },
-        { "ink": "--text", "ground": "--surface-warm", "ratio": 12.47, "verdict": "PASS" },
-        { "ink": "--text-soft", "ground": "--bg", "ratio": 6.78, "verdict": "PASS" },
-        { "ink": "--text-soft", "ground": "--bg-alt", "ratio": 5.80, "verdict": "PASS" },
-        { "ink": "--text-soft", "ground": "--surface", "ratio": 7.19, "verdict": "PASS" },
-        { "ink": "--text-soft", "ground": "--surface-warm", "ratio": 6.37, "verdict": "PASS" },
-        { "ink": "--accent-text", "ground": "--bg", "ratio": 6.61, "verdict": "PASS" },
-        { "ink": "--accent-text", "ground": "--bg-alt", "ratio": 5.66, "verdict": "PASS" },
-        { "ink": "--accent-text", "ground": "--surface", "ratio": 7.01, "verdict": "PASS" },
-        { "ink": "--accent-text", "ground": "--surface-warm", "ratio": 6.21, "verdict": "PASS" },
-        { "ink": "--accent-on-dark", "ground": "--dark", "ratio": 7.93, "verdict": "PASS" },
-        { "ink": "--accent-on-dark", "ground": "--dark-alt", "ratio": 5.50, "verdict": "PASS" },
-        { "ink": "--on-dark", "ground": "--dark", "ratio": 12.08, "verdict": "PASS" },
-        { "ink": "--on-dark", "ground": "--dark-alt", "ratio": 8.37, "verdict": "PASS" },
-        { "ink": "--on-dark", "ground": "--accent", "ratio": 3.29, "verdict": "LARGE-ONLY, UNREACHED (no section declares tone=accent)" },
-        { "ink": "--on-dark-soft (rgba .82 composited)", "ground": "--dark", "ratio": 8.66, "verdict": "PASS" },
-        { "ink": "--on-dark-soft (rgba .82 composited)", "ground": "--dark-alt", "ratio": 6.20, "verdict": "PASS" },
-        { "ink": "--on-dark-soft (rgba .82 composited)", "ground": "--accent", "ratio": 2.69, "verdict": "SUB-3.0, UNREACHED (no section declares tone=accent)" }
+        {
+          "ink": "--text",
+          "ground": "--bg",
+          "ratio": 13.27,
+          "verdict": "PASS"
+        },
+        {
+          "ink": "--text",
+          "ground": "--bg-alt",
+          "ratio": 11.36,
+          "verdict": "PASS"
+        },
+        {
+          "ink": "--text",
+          "ground": "--surface",
+          "ratio": 14.09,
+          "verdict": "PASS"
+        },
+        {
+          "ink": "--text",
+          "ground": "--surface-warm",
+          "ratio": 12.47,
+          "verdict": "PASS"
+        },
+        {
+          "ink": "--text-soft",
+          "ground": "--bg",
+          "ratio": 6.78,
+          "verdict": "PASS"
+        },
+        {
+          "ink": "--text-soft",
+          "ground": "--bg-alt",
+          "ratio": 5.8,
+          "verdict": "PASS"
+        },
+        {
+          "ink": "--text-soft",
+          "ground": "--surface",
+          "ratio": 7.19,
+          "verdict": "PASS"
+        },
+        {
+          "ink": "--text-soft",
+          "ground": "--surface-warm",
+          "ratio": 6.37,
+          "verdict": "PASS"
+        },
+        {
+          "ink": "--accent-text",
+          "ground": "--bg",
+          "ratio": 6.61,
+          "verdict": "PASS"
+        },
+        {
+          "ink": "--accent-text",
+          "ground": "--bg-alt",
+          "ratio": 5.66,
+          "verdict": "PASS"
+        },
+        {
+          "ink": "--accent-text",
+          "ground": "--surface",
+          "ratio": 7.01,
+          "verdict": "PASS"
+        },
+        {
+          "ink": "--accent-text",
+          "ground": "--surface-warm",
+          "ratio": 6.21,
+          "verdict": "PASS"
+        },
+        {
+          "ink": "--accent-on-dark",
+          "ground": "--dark",
+          "ratio": 7.93,
+          "verdict": "PASS"
+        },
+        {
+          "ink": "--accent-on-dark",
+          "ground": "--dark-alt",
+          "ratio": 5.5,
+          "verdict": "PASS"
+        },
+        {
+          "ink": "--on-dark",
+          "ground": "--dark",
+          "ratio": 12.08,
+          "verdict": "PASS"
+        },
+        {
+          "ink": "--on-dark",
+          "ground": "--dark-alt",
+          "ratio": 8.37,
+          "verdict": "PASS"
+        },
+        {
+          "ink": "--on-dark",
+          "ground": "--accent",
+          "ratio": 3.29,
+          "verdict": "LARGE-ONLY, UNREACHED (no section declares tone=accent)"
+        },
+        {
+          "ink": "--on-dark-soft (rgba .82 composited)",
+          "ground": "--dark",
+          "ratio": 8.66,
+          "verdict": "PASS"
+        },
+        {
+          "ink": "--on-dark-soft (rgba .82 composited)",
+          "ground": "--dark-alt",
+          "ratio": 6.2,
+          "verdict": "PASS"
+        },
+        {
+          "ink": "--on-dark-soft (rgba .82 composited)",
+          "ground": "--accent",
+          "ratio": 2.69,
+          "verdict": "SUB-3.0, UNREACHED (no section declares tone=accent)"
+        }
       ],
-      "tones_used_by_this_site": ["paper", "surface", "alt", "dark", "slate"],
-      "tones_unused": ["accent"],
-      "note": "the two sub-4.5 cells are both on the accent tone, which this site never declares. S2.3 permits accent-as-ground for large display only; the site satisfies the row by carrying no accent-tone section at all. The charter's own matrix carries 15 pairs and agrees with this regeneration cell for cell; this regeneration adds five it omits (--text/--text-soft/--accent-text on --surface-warm, and --on-dark-soft composited on --dark and --dark-alt), all passing."
+      "tones_used_by_this_site": [
+        "paper",
+        "surface",
+        "alt",
+        "dark",
+        "slate"
+      ],
+      "tones_unused": [
+        "accent"
+      ],
+      "note": "the two sub-4.5 cells are both on the accent tone, which this site never declares. S2.3 permits accent-as-ground for large display only; the site satisfies the row by carrying no accent-tone section at all. The charter's own matrix carries 15 pairs and agrees with this regeneration cell for cell; this regeneration adds five it omits (--text/--text-soft/--accent-text on --surface-warm, and --on-dark-soft composited on --dark and --dark-alt), all passing.",
+      "instrument": {
+        "checker": "agents/site/verify.mjs",
+        "sha256": "6e2a04c5996ba6ea00cb6d968a85e19c4eeb03ac74f4f2bb56699efa2dc9030c",
+        "vendored_from_seed": "768d726641bfdfeac0af5eaf894061faa19e215e",
+        "pairs_derived": 35,
+        "pairs_asserted": 16,
+        "flattened_translucent_inks": 2,
+        "tokens_unresolvable": 0,
+        "hand_cells_retained_beyond_the_instrument": 4,
+        "agreement": "16 of 16 asserted cells agree with the 2026-09-06 hand matrix to the second decimal"
+      }
     }
   },
   "data_posture": "no-db",
@@ -68,13 +187,47 @@
     "method": "grep of src/, public/, netlify.toml and package.json for service_role, anon key, API_KEY and JWT-shaped literals: 0 hits. The only outbound POST is site.config.tsx:19 to the shared AISmith-functions contact fn; the destination resolves server-side from the origin map and never travels in the body."
   },
   "components": {
-    "core_present": ["SiteHeader", "SiteFooter", "SkipLink", "Wrap", "Section", "Band", "PageTitle", "Display", "SecTitle", "Eyebrow", "Lead", "Em", "Btn", "MediaCard", "TierCard", "EventCard", "StatCard", "InfoCard", "ContactForm", "NewsletterForm", "PrivacyNotice", "Crumb"],
+    "core_present": [
+      "SiteHeader",
+      "SiteFooter",
+      "SkipLink",
+      "Wrap",
+      "Section",
+      "Band",
+      "PageTitle",
+      "Display",
+      "SecTitle",
+      "Eyebrow",
+      "Lead",
+      "Em",
+      "Btn",
+      "MediaCard",
+      "TierCard",
+      "EventCard",
+      "StatCard",
+      "InfoCard",
+      "ContactForm",
+      "NewsletterForm",
+      "PrivacyNotice",
+      "Crumb"
+    ],
     "core_missing": [],
-    "optional_enabled": ["Hours", "Map"],
-    "optional_present_but_unimported": ["audio", "deco", "gallery", "marquee", "tiles", "timeline", "video"],
+    "optional_enabled": [
+      "Hours",
+      "Map"
+    ],
+    "optional_present_but_unimported": [
+      "audio",
+      "deco",
+      "gallery",
+      "marquee",
+      "tiles",
+      "timeline",
+      "video"
+    ],
     "bespoke_css_found": [],
     "inline_type_in_compositions": 0,
-    "note": "src/content and src/routes carry ZERO inline font-size, fontSize or clamp. The S3.2a defect that aismith-site and zuidgeluid-site each reinvented independently is absent here. Every spine file is byte-identical to the seed at the charter-pinned sha (25 files, verify.mjs [1])."
+    "note": "src/content and src/routes carry ZERO inline font-size, fontSize or clamp. The S3.2a defect that aismith-site and zuidgeluid-site each reinvented independently is absent here. Every spine file is byte-identical to the seed at 768d726641bfdfeac0af5eaf894061faa19e215e, measured by the re-vendored checker as 26 FILES rather than the 25 the 1.8.25 row recorded: the file SET is unchanged and the SCAN widened, so the count is a fact about the instrument and not about the tree. NewsletterForm stays in core_present because the spine exports it; this site mounts none (charter S7, `Newsletter: off.`), which is why the notice now ships `newsletter: false`."
   },
   "seo_a11y": {
     "per_route_meta": true,
@@ -82,7 +235,7 @@
     "ssr_content": true,
     "wcag_aa": null,
     "lighthouse": null,
-    "method": "per-route head() on all 6 content routes with unique titles (verify [4]); public/sitemap.xml carries the same 6 URLs; SSR confirmed by fetching the DEPLOYED page at https://cafe-josee.demos.aismith.io/, which returns the full rendered copy rather than an empty root div; lang=\"nl\" hard-set in __root.tsx:24; skip-link renders on the deployed page. Lighthouse NOT measured this pass: the repo ships no Lighthouse workflow and no report exists."
+    "method": "per-route head() on all 6 content routes with unique titles (verify [4]); public/sitemap.xml carries the same 6 URLs; lang=\"nl\" hard-set in __root.tsx. THE SKIP LINK IS NOW DUTCH: the re-vendored chrome.tsx reads the locale from site.config's `privacy.lang` and renders `Naar de inhoud`, closing the S7.2 additive finding this surface raised on 2026-09-06 and could not fix from its own layer. SSR was confirmed on 2026-09-06 by fetching the deployed page; NOT re-fetched this pass, the deploy happening on merge, so that row is carried as measured then and the residual production gate in verify [7] stands. Lighthouse NOT measured: the repo ships no Lighthouse workflow and no report exists."
   },
   "voice": {
     "prose_em_dashes": 0,
@@ -100,100 +253,127 @@
   "source": "owned-fleet",
   "findings": {
     "gate_fail": [],
-    "important_fail": [
-      {
-        "id": "S7.4a",
-        "finding": "The rendered privacy notice describes a newsletter this site does not run. /privacy carries \"Nieuwsbrief. Schrijf je je in, dan verwerken we je e-mailadres om je de nieuwsbrief te sturen\" and the Rechtsgrond paragraph names \"je toestemming (nieuwsbrief, kaart)\", while site.config.tsx:20 sets newsletterAction to the empty string and the footer mounts no NewsletterForm. The clause is UNGATED in the spine: legal.tsx renders <li>{t.dNews}</li> with no condition, unlike the map clause beside it which is gated on mapsEmbed. This is the exact mirror of the 1.8.11 finding that produced S7.4a: there the notice UNDERSTATED what a shipped form collects, here it describes processing that does not occur at all. S7.4a's own words, that the notice and the form must not carry opposite defaults for one fact, reach both directions. SPINE DEFECT, not a site defect: legal.tsx is byte-identical to the seed at the pinned sha and this lane fixes no spine file.",
-        "first_seen": "2026-09-06",
-        "evidence_run": "deployed page https://cafe-josee.demos.aismith.io/privacy fetched 2026-09-06 18:16Z; src/components/spine/legal.tsx render block and site.config.tsx:20 at 2069da46"
-      },
-      {
-        "id": "S7.4",
-        "finding": "The subprocessor list omits two Google transfers that happen on page load. The notice names Google only as \"Google Maps: kaartweergave, laadt pas na een klik\", which tells the visitor Google receives their IP only after a click. On the deployed page it receives it twice before any click: __root.tsx links a stylesheet from fonts.googleapis.com (with a preconnect), and every route renders photography from lh3.googleusercontent.com (site.config.tsx:100, seven assets). S7.4 requires the notice to reflect the site's ACTUAL data flows rather than boilerplate. The fonts link is permitted by S2.4 and the photo sourcing is declared in charter review item 11, so the defect is the notice's silence, not the requests.",
-        "first_seen": "2026-09-06",
-        "evidence_run": "deployed pages / and /privacy fetched 2026-09-06 18:16Z; src/routes/__root.tsx links block and src/content/site.config.tsx:100 at 2069da46"
-      }
-    ],
+    "important_fail": [],
     "additive_fail": [
       {
         "id": "S8.4",
-        "finding": "functions/newsletter.ts ships in the repo against a charter that declares \"Newsletter: off\", and it carries the seed's origin rather than this site's: ALLOWED_ORIGIN is hardcoded to https://aismith.io at line 7. Its own header comment says it is unmounted in the concept build. Nothing in the front end references it and it is absent from the charter's section 10 transfer unit, which names only the contact function. Docs-versus-deploy divergence in the gentler direction: an artefact shipped and undeclared rather than declared and unwired.",
+        "finding": "STILL OPEN AND UNTOUCHED BY THIS LANE, and slightly sharper than it was. functions/newsletter.ts still ships against a charter that declares `Newsletter: off.`, still hardcodes the seed's ALLOWED_ORIGIN https://aismith.io at line 7, and is still absent from the charter's S10 transfer unit. What sharpens it is that the notice now says out loud, in data (`newsletter: false`), that this site runs no newsletter, so the repo asserts the absence in one file and ships the function in another. Removing it is a deletion this brief does not commission.",
         "first_seen": "2026-09-06",
-        "evidence_run": "functions/newsletter.ts:7 and charter sections 7 and 10 at 2069da46"
-      },
-      {
-        "id": "S7.2",
-        "finding": "The skip-link renders the English string \"Skip to content\" on a page whose shell hard-sets lang=\"nl\". A screen reader announcing it under the declared document language reads English words as Dutch. SPINE-SUPPLIED and hardcoded: chrome.tsx:10 returns the literal with no lang branch and no prop, so no site can correct it from its own layer. Raised rather than fixed.",
-        "first_seen": "2026-09-06",
-        "evidence_run": "deployed pages / and /privacy fetched 2026-09-06 18:16Z; src/components/spine/chrome.tsx:10 at 2069da46"
+        "evidence_run": "functions/newsletter.ts:7 and charter S7 / S10 at this PR's head"
       },
       {
         "id": "S7.1",
-        "finding": "No og:image ships. Declared in charter section 9 and review item 14 as a go-live item, so this is a known and dated gap rather than an omission.",
+        "finding": "STILL OPEN. No og:image ships. Declared in charter S9 and review item 14 as a go-live item, and the fleet-wide link-preview row in the Factory backlog names this surface as one of TWO deliberately absent from its fix set, `by declaration in its charter`. A known and dated gap.",
         "first_seen": "2026-09-06",
-        "evidence_run": "src/routes/__root.tsx head() at 2069da46"
+        "evidence_run": "src/routes/__root.tsx head() at this PR's head"
       },
       {
         "id": "S7.3",
-        "finding": "Lighthouse NOT MEASURED. The repo ships no Lighthouse workflow and no report exists, so this row has no operand this pass. Recorded as unmeasured rather than scored, because a row reported PASS on no measurement is worse than an open one.",
+        "finding": "STILL UNMEASURED. The repo ships no Lighthouse workflow and no report exists, so this row has no operand this pass either. Recorded as unmeasured rather than scored: a row reported PASS on no measurement is worse than an open one.",
         "first_seen": "2026-09-06",
-        "evidence_run": ".github/workflows/ holds site-verify.yml only, at 2069da46"
+        "evidence_run": ".github/workflows/ holds site-verify.yml only, at this PR's head"
       }
     ],
     "partial": [
       {
         "id": "S7.4",
-        "finding": "legal.controller, at site-contract 1.8.25, is written by the AUDIT at GO-LIVE from the intake record. This surface is not at go-live: seo.noindex is true, the charter calls it a prospect DEMO concept and not a working client, and no intake record has been reconciled into a controller block. site.config.tsx:84 nonetheless already carries a build-time answer, controller name \"Café Josee\" with email contact@aismith.io, which is the AI Smith catch-all rather than the controller's own address, and the deployed notice uses it both as the controller contact and as the address for exercising data-subject rights. So this audit does NOT write legal.controller and the manifest legal block below omits it deliberately. PARTIAL is the expected reading until go-live, and the build-time answer is the third instance of the pattern 1.8.25 was cut for.",
+        "finding": "STILL PARTIAL, unchanged in substance. legal.controller is written by the AUDIT at GO-LIVE from the intake record. This surface is not at go-live: seo.noindex is true, the charter calls it a prospect DEMO concept, and no intake record has been reconciled into a controller block. site.config still carries the build-time answer (controller `Café Josee` with the AI Smith catch-all contact@aismith.io). So this pass does NOT write legal.controller either and the legal block below omits it deliberately. The 1.8.26 forms fix touches this row at one point and the point is that it does NOT resolve it: `contactEmail` is deliberately NOT passed at the ContactForm mount, because the only address available to pass is the catch-all and offering it as the visitor's fallback mail path would publish the same build-time answer a second time.",
         "first_seen": "2026-09-06",
-        "evidence_run": "schemas/manifest.schema.json legal description at 8f9ea269; src/content/site.config.tsx:84 and deployed /privacy at 2069da46"
+        "evidence_run": "schemas/manifest.schema.json legal description at 362a3310f24258f38bd88132343ea43c0dedc383; src/content/site.config.tsx controller block and src/content/praktisch.tsx ContactForm mount at this PR's head"
       },
       {
         "id": "S3.2a",
-        "finding": "ADDITIVE at 1.8.25 and GATE at 1.9.0. The site itself introduces nothing: zero inline type in src/content and src/routes. But it inherits the spine's scoped roles unchanged from the pinned seed, and S3.2a's own note says its role inventory is PROVISIONAL and known to undercount. So the row is satisfied at the instance layer and open at the spine layer, and this surface cannot close the spine half.",
+        "finding": "NARROWED, still ADDITIVE at 1.8.26 and GATE at 1.9.0. The site itself still introduces nothing: zero inline type in src/content and src/routes. What moved is the SPINE HALF this surface said it could not close. spine.css at 768d726641bfdfeac0af5eaf894061faa19e215e carries the S3.2a type roles as STANDALONE type-only classes (.cat, .pill, .loc, .card-title, .card-text, .price, .num, .lbl plus the seven the 2026-08-27 sweep measured as owed), cards.tsx composes .card-title and .card-text rather than leaving the four card components to redeclare the values on bare h3 and p, and the card rules in spine.css drop the type declarations they duplicated. So the row is satisfied at the instance layer as before and now largely discharged at the spine layer; what remains open is S3.2a's own note that its role inventory is PROVISIONAL and known to undercount, which no surface can close.",
         "first_seen": "2026-09-06",
-        "evidence_run": "grep of src/content and src/routes for fontSize, font-size and clamp: 0 hits at 2069da46"
+        "evidence_run": "grep of src/content and src/routes for fontSize, font-size and clamp: 0 hits at this PR's head; src/styles/spine.css and src/components/spine/cards.tsx byte-identical to seed 768d726641bfdfeac0af5eaf894061faa19e215e"
       }
     ],
     "not_applicable": [
-      { "id": "S4.6", "finding": "No --hue-N slots declared. tokens.css states the reason: a two-ink brand already carried by --accent and --highlight, with the coral belonging to the mark rather than to a section ground. The mechanism is inert and the hue arm of the S2.3 matrix is empty rather than skipped.", "first_seen": "2026-09-06", "evidence_run": "src/styles/tokens.css OPTIONAL slots block at 2069da46" },
-      { "id": "S5.2", "finding": "No DB and no hub read-pipe declared or present.", "first_seen": "2026-09-06", "evidence_run": "grep of src/ for supabase-js, createClient and REST paths: 0 hits at 2069da46" },
-      { "id": "S6.4", "finding": "S5.2 does not apply, so there is no doorway to check.", "first_seen": "2026-09-06", "evidence_run": "as above" },
-      { "id": "S10.0", "finding": "No S10 pipe declared and none present: no build-time fetch, no committed feed snapshot, no scripts/ directory. S10.0 through S10.6 are all N/A on this surface.", "first_seen": "2026-09-06", "evidence_run": "grep of src/ for feed and snapshot paths: 0 hits; no scripts/ at 2069da46" }
+      {
+        "id": "S4.6",
+        "finding": "STILL N/A, and the mechanism it is inert against is now larger. No --hue-N slots are declared; tokens.css states the reason (a two-ink brand already carried by --accent and --highlight, the coral belonging to the mark rather than to a section ground). The re-vendored spine.css widens the hue block with --sec-accent and an optional --hue-N-accent and adds the selector-keyed hue-ink rule that retires the [data-tone] arms on .eyebrow and .crumb a. All of it is inert here: with no slot declared, every chain falls through to the tone, and the checker reports the hue arm of the S2.3 matrix as empty rather than skipped. Re-scored rather than carried, because the operand changed even though the verdict did not.",
+        "first_seen": "2026-09-06",
+        "evidence_run": "src/styles/tokens.css OPTIONAL slots block at this PR's head (untouched); verify [2] AA denominator 35 derived / 16 asserted / 0 unresolvable"
+      },
+      {
+        "id": "S5.2",
+        "finding": "STILL N/A. No DB and no hub read-pipe declared or present.",
+        "first_seen": "2026-09-06",
+        "evidence_run": "grep of src/ for supabase-js, createClient and REST paths: 0 hits at this PR's head"
+      },
+      {
+        "id": "S6.4",
+        "finding": "STILL N/A. S5.2 does not apply, so there is no doorway to check.",
+        "first_seen": "2026-09-06",
+        "evidence_run": "as above"
+      },
+      {
+        "id": "S10.0",
+        "finding": "STILL N/A. No S10 pipe declared and none present: no build-time fetch, no committed feed snapshot, no scripts/ directory. S10.0 through S10.6 are all N/A on this surface.",
+        "first_seen": "2026-09-06",
+        "evidence_run": "grep of src/ for feed and snapshot paths: 0 hits; no scripts/ at this PR's head"
+      }
     ],
-    "closed_by_this_pass": [],
-    "raised_to_factory": [
+    "closed_by_this_pass": [
       {
         "id": "S7.4a",
-        "finding": "SPINE FIX OWED, fleet-wide. legal.tsx renders the newsletter processing clause unconditionally and the Rechtsgrond sentence names nieuwsbrief unconditionally, so every site on the spine that does NOT run a newsletter publishes a notice describing processing it does not perform. The map clause one line above is already gated on mapsEmbed, so the shape of the fix exists in the same file. Suggested seam: a newsletter boolean on PrivacyNotice, defaulted from whether a NewsletterForm is mounted, with the basis sentence composed from the same flags. This is the S7.4a rule applied in the direction 1.8.11 did not walk.",
+        "finding": "CLOSED. The unconditional newsletter clause is gone from the spine and this site now declares that it ships no newsletter. legal.tsx at 768d726641bfdfeac0af5eaf894061faa19e215e takes `newsletter` and `withName` props, gates `<li>{t.dNews}</li>` on the first and composes the Rechtsgrond / Legal basis sentence from the consent sources the site ACTUALLY has, so with `newsletter: false` the notice renders neither the newsletter clause nor `nieuwsbrief` in the basis. src/content/site.config.tsx passes `newsletter: false`, which is the charter's own words (S7 Integrations, `Newsletter: off.`) and agrees with the tree: this repo mounts no NewsletterForm. The 1.8.25 row called this a SPINE DEFECT a site could not fix and raised it; the seam it suggested, a newsletter boolean defaulted to the fleet default with the basis composed from the same flags, is the seam that shipped.",
         "first_seen": "2026-09-06",
-        "evidence_run": "src/components/spine/legal.tsx (NL dNews and basis, EN dNews and basis) at seed d719e03b, byte-identical in this repo"
+        "closed_at": "2026-09-10",
+        "evidence_run": "src/components/spine/legal.tsx byte-identical to seed 768d726641bfdfeac0af5eaf894061faa19e215e (sha256 checked in verify [1], 26 of 26 files); src/content/site.config.tsx privacy block `newsletter: false`; charter S8 restated to match"
+      },
+      {
+        "id": "S7.4",
+        "finding": "CLOSED on the subprocessor limb. The notice now names all THREE Google transfers and their TIMING, which was the false part rather than the map row itself. `Google Fonts` (the fonts.googleapis.com stylesheet and preconnect in src/routes/__root.tsx) and `Google Bedrijfsprofiel` (the lh3.googleusercontent.com photography, seven assets via `gbp()` in site.config.tsx) are both stated as loading `zodra je een pagina opent`, and the Google Maps row keeps its click condition and now says which surface it is on. The charter's S8 enabled-subprocessor list, whose `and only the enabled ones` clause is what made the silence matter, carries the same five rows. The 1.8.25 manifest already stated both transfers in its own `legal.subprocessors` block, so what closes here is the gap between the manifest and the page, not the Factory's knowledge of it.",
+        "first_seen": "2026-09-06",
+        "closed_at": "2026-09-10",
+        "evidence_run": "src/content/site.config.tsx privacy.subprocessors (5 rows); cafe-josee-site-charter.md S8; the requests themselves unchanged at src/routes/__root.tsx links block and site.config.tsx `gbp()`"
       },
       {
         "id": "S7.2",
-        "finding": "SPINE FIX OWED. chrome.tsx:10 hardcodes the English skip-link string with no lang branch and no prop, on a spine whose declared fleet languages are NL and EN and whose PrivacyNotice already takes a lang prop. Every nl site in the fleet ships it.",
+        "finding": "CLOSED. The skip link is no longer a hardcoded English literal. chrome.tsx at 768d726641bfdfeac0af5eaf894061faa19e215e keys `Naar de inhoud` / `Skip to content` off a locale it reads from `privacy.lang`, so an nl site gets Dutch with no per-site call-site change and an undeclared locale falls back to English rather than regressing. This surface raised it as SPINE-SUPPLIED and unfixable from its own layer, and that is exactly how it was fixed.",
         "first_seen": "2026-09-06",
-        "evidence_run": "src/components/spine/chrome.tsx:10 at seed d719e03b, byte-identical in this repo"
+        "closed_at": "2026-09-10",
+        "evidence_run": "src/components/spine/chrome.tsx byte-identical to seed 768d726641bfdfeac0af5eaf894061faa19e215e; site.config privacy.lang is \"nl\""
       },
       {
         "id": "S8.5",
-        "finding": "THE SEED PIN IS EIGHT COMMITS BEHIND SEED MAIN AND THE FACTORY WORKING COPY IS A THIRD DISTINCT FILE. verify.mjs sha256 measured three ways today: this repo and seed at the charter-pinned d719e03b both b64cfced, seed main c340b9b0 is 6e2a04c5, Factory agents/audit/site/verify.mjs at 8f9ea269 is 8843e4bb. S8.5 says a site holding the older checker is CONFORMANT to the contract it can actually run and that the gap is the Factory's finding, never the site's, and it forbids the site closing it by copying the Factory file. So this is raised, not fixed. The eight unpinned seed commits include #19, which its subject line says makes the AA matrix see rgba and the hue block: that is precisely the S2.3 arm this audit had to regenerate by hand because the pinned checker does not cover it.",
+        "finding": "HALF CLOSED, AND THE OPEN HALF IS RESTATED RATHER THAN DROPPED. The 1.8.25 row measured verify.mjs THREE WAYS and found three distinct files. Two of the three are now one: this repo and the seed both hold 6e2a04c5 (639 lines became 963), the pin moved from d719e03b to 768d726641bfdfeac0af5eaf894061faa19e215e, and the site now runs a checker that sees rgba inks and the hue block, which is the coverage the last walk had to supply by hand. THE FACTORY'S OWN COPY IS STILL A THIRD FILE: agents/audit/site/verify.mjs at Factory 362a3310f24258f38bd88132343ea43c0dedc383 is 8843e4bb, unchanged since 8f9ea269. S8.5 puts that gap at the Factory and forbids a site closing it by copying the Factory file, so it stays raised and is re-listed under raised_to_factory below. Closing it here would be exactly the act S8.5 names.",
         "first_seen": "2026-09-06",
-        "evidence_run": "sha256sum across cafe-josee-site 2069da46, aismith-site-seed d719e03b and c340b9b0, and AISmith-Factory 8f9ea269, all taken 2026-09-06 18:1xZ"
+        "closed_at": "2026-09-10",
+        "evidence_run": "sha256sum agents/site/verify.mjs in this repo and in aismith-site-seed at 768d726641bfdfeac0af5eaf894061faa19e215e (both 6e2a04c5); AISmith-Factory agents/audit/site/verify.mjs at 362a3310f24258f38bd88132343ea43c0dedc383 (8843e4bb), all taken 2026-09-10"
+      }
+    ],
+    "raised_to_factory": [
+      {
+        "id": "S8.5",
+        "finding": "THE FACTORY'S WORKING COPY OF verify.mjs IS STILL A THIRD DISTINCT FILE, and this is the surviving half of the 1.8.25 raise. Measured 2026-09-10: this repo and aismith-site-seed at 768d726641bfdfeac0af5eaf894061faa19e215e both hold 6e2a04c5; AISmith-Factory agents/audit/site/verify.mjs at 362a3310f24258f38bd88132343ea43c0dedc383 holds 8843e4bb, the same value it held at 8f9ea269 four days ago. The site/seed gap closed by this surface re-pinning, which is the only act a site is permitted; S8.5 says the remaining gap is the Factory's finding and never the site's, and forbids the site closing it by copying the Factory file. Raised again, not fixed.",
+        "first_seen": "2026-09-06",
+        "evidence_run": "sha256sum across this repo, aismith-site-seed 768d726641bfdfeac0af5eaf894061faa19e215e and AISmith-Factory 362a3310f24258f38bd88132343ea43c0dedc383, taken 2026-09-10"
       },
       {
         "id": "S3.2",
-        "finding": "RULE COLLISION, reported rather than resolved. Site-contract 1.8.25 widens S3.2 so that its denominator is EVERY stylesheet the site ships that is not spine.css, read whole, with a type declaration in one scored here. Read literally that population includes the co-located module stylesheets that S3.3 REQUIRES each module to ship, and hours.css and map.css, the two this site imports, each declare type. Scored PASS on the reading that bespoke means authored for this site: all nine module stylesheets are byte-identical to the pinned seed and are frozen-layer spine, and the worked instances 1.8.25 names (skin-showcase.css, graphics.css, styles.css) are all site-authored. If that reading is wrong, every site in the fleet fails S3.2 by construction the moment it enables one module. The boundary is worth one sentence in the row.",
+        "finding": "RULE COLLISION, UNCHANGED AT 1.8.26 AND THEREFORE RE-RAISED. Site-contract 1.8.26 moved exactly one digest, as-site-seed-spine.md; as-site-spine-standard.md is byte-identical to its 1.8.25 value (122276a5), so the S3.2 wording this surface reported four days ago is the wording still in force. Read literally, S3.2's denominator of EVERY stylesheet the site ships that is not spine.css includes the co-located module stylesheets that S3.3 REQUIRES each module to ship, and hours.css and map.css, the two this site imports, each declare type. Scored PASS again on the reading that bespoke means authored for this site: all nine module stylesheets are byte-identical to the pinned seed and are frozen-layer spine. If that reading is wrong, every site in the fleet fails S3.2 by construction the moment it enables one module. The boundary is still worth one sentence in the row.",
         "first_seen": "2026-09-06",
-        "evidence_run": "as-site-spine-standard.md S3.2 at 8f9ea269 against src/components/spine/modules/*.css, all byte-identical to seed d719e03b"
+        "evidence_run": "dist/site-contract/contract.json at 362a3310f24258f38bd88132343ea43c0dedc383 against its 1.8.25 parent: as-site-spine-standard.md 122276a5 unmoved, one digest moved in the whole cut; src/components/spine/modules/*.css byte-identical to seed 768d726641bfdfeac0af5eaf894061faa19e215e"
+      },
+      {
+        "id": "S8.4a",
+        "finding": "THE PHRASE `charter-pinned` HAD NO REFERENT ON THIS SURFACE FOR ITS WHOLE LIFE, and three separate Factory artifacts used it as though it did. .github/workflows/site-verify.yml's own comment reads `Pin to the sha the charter names, never a moving ref`; scripts/reconcile-pull.sh says this surface `STILL PINS SEED_REF d719e03b`; the Factory backlog row that commissioned this lane says `the seed at the charter-pinned d719e03b`. cafe-josee-site-charter.md NAMED NO SHA AT ALL: grep for a 40-hex or an 8-hex string over the whole 208-line charter returned nothing, and the only prose record of the fork point is SCAFFOLD.md line 3. So the gate's pin was authored nowhere and the three artifacts agreed with each other rather than with the repo. This pass CREATED the locus (charter head, `Spine pin`) rather than moving one, and says so in the charter itself. THE CLASS IS THE RAISE: the seed ships the workflow as a template whose comment presupposes a charter field the seed's own charter template does not provide, so every site built from it inherits the same missing operand, and nothing in the site gate can see the absence. verify [8] now checks that SEED_REF is a full 40-char sha and that CHARTER names a file that exists; it cannot check that the charter names the sha the workflow pins. Adjacent to the open Factory row `A site's gate WORKFLOW sits outside the gate by construction`, which is about the same file and the neighbouring failure.",
+        "first_seen": "2026-09-10",
+        "evidence_run": "grep -E 'seed|[0-9a-f]{8,40}' over cafe-josee-site-charter.md at 2324fc6fa7eb5d49b72044ecb5fbefc7c587854c: no sha; .github/workflows/site-verify.yml:38 and :66; SCAFFOLD.md:3"
       }
     ]
   },
   "variance_noted": [
-    ".github/workflows/site-verify.yml is NOT byte-identical to the declared 510737fd: measured be5b3ede. The whole difference is the two per-site blanks the template exists to have filled, SEED_REF set to d719e03b and CHARTER set to cafe-josee-site-charter.md, landed by this repo's PR #1. dist/site-contract/contract.json at 8f9ea269 declares this file a FILL-IN TEMPLATE and states that a sha mismatch here is the surface having done its job and is a declared-variance question rather than drift. So this row is a DECLARED VARIANCE, not drift, and the wave brief's characterisation of it is corrected here rather than repeated.",
-    "canon.json canon_version is written 0.25, the version as-canon-spine-standard.md carries at 8f9ea269, rather than the 0.13 every sibling declaration in the fleet still carries. The field records the standard version a declaration was WRITTEN AGAINST and this one is written today, so 0.13 would be a false record. canon-version-check.py refuses to run on a non-control-plane declaration by design and does not gate this; the ruled rule for the rest of the fleet is report the age, never gate.",
-    "manifest.schema.json is VENDORED AT THE BARE REPO ROOT. No file of that basename was held anywhere in the tree, which the brief's row 3 anticipates. Rows 1 and 2 name directories (contract/ and schema/) and row 3 says the bare root, read here as the repository root itself rather than a bare schema/ directory. Stated so the controller can move it with one command if the other reading was meant.",
-    "The optional module set ships nine modules in the tree and imports two, Hours and Map, exactly as the charter declares. Seven module files are present but unimported, so neither their JS nor their CSS reaches the bundle, which is the S3.3 barrel discipline working rather than dead weight.",
-    "netlify.toml's build comment says all 8 routes prerendered; there are 6. Seed comment residue, no behavioural effect, vite.config.ts lists the correct 6."
+    "`.github/workflows/site-verify.yml` is NOT byte-identical to the declared 510737fd and is a DECLARED VARIANCE rather than drift, on the same reading as the 1.8.25 row: measured 18411b51 this pass, be5b3ede last pass. The template is UNMOVED by the 1.8.26 cut (its digest is byte-identical to its 1.8.25 value), so the whole difference is still the two per-site blanks the template exists to have filled, and the only thing that moved inside this repo is the VALUE of one of them: SEED_REF d719e03b -> 768d7266, anchored on the whole line, with CHARTER unchanged. dist/site-contract/contract.json declares this file a FILL-IN TEMPLATE and states that a sha mismatch here is the surface having done its job.",
+    "THE CHARTER'S SEED PIN WAS CREATED BY THIS PASS, NOT MOVED, and the wave brief asked for it to be moved. `cafe-josee-site-charter.md` carried no sha anywhere; the pin now lives in the charter head as `Spine pin` and the charter states in its own words that the line is new and why. Recorded as a variance because a reader comparing the brief to the diff would otherwise read a created locus as a moved one. Raised to the Factory as S8.4a above, the class being the seed's template rather than this surface.",
+    "THE CHARTER'S CANON POINTER AND THE README'S WERE EIGHT MINORS STALE and are corrected in passing: both read site-contract 1.8.18 (the charter citing Factory `e0d91cd`) while `canon.json` `holds[]` declared 1.8.25. Neither is a declaration: `scripts/reconcile-pull.sh` already records that this surface's README, charter and build brief carry `a build-time canon POINTER of site-contract 1.8.18, which is a builder's prose and NOT a holds[] declaration`. They now read 1.8.26 and say which of the two they are. `docs/cafe-josee-build-brief.md` is NOT touched: it is a dated build record rather than a live pointer, on the same rule that leaves SCAFFOLD.md's fork sha alone.",
+    "`canon.json` `canon_version` stays 0.25, unchanged and re-stated: the field records the standard version a declaration was WRITTEN AGAINST, this one was written on 2026-09-06 against as-canon-spine-standard.md at 8f9ea269, and 1.8.26 moved no canon-spine standard. Only `holds[0]` moved: version, stamped and factory_sha, a three-line diff.",
+    "`manifest.schema.json` is VENDORED AT THE BARE REPO ROOT and is byte-identical to the 1.8.26 `dist/site-contract/schema/manifest.schema.json` (18b5a65e both sides, verified this pass), so the Trigger 1 pull re-copies it as a NO-OP. Of the ten files the cut stamps, exactly two are vendored into a site at all, this one and the workflow template, and neither moved in 1.8.26.",
+    "The optional module set ships nine modules in the tree and imports two, Hours and Map, exactly as the charter declares. Seven module files are present but unimported, so neither their JS nor their CSS reaches the bundle.",
+    "`netlify.toml`'s build comment still says all 8 routes prerendered; there are 6. Seed comment residue, no behavioural effect, `vite.config.ts` lists the correct 6. Carried unfixed: it is not in this brief and it is not a spine file.",
+    "NO BUILD OR TYPECHECK WAS RUN LOCALLY and CI is the operand for both. `agents/scaffold/worker/WORKER.md` S8 forbids this lane installing node_modules locally and sends the build to CI, and `.github/workflows/site-verify.yml` runs `npm ci && npm run build && npx tsc --noEmit` ahead of the gate. Stated because two of this pass's instance edits are type-bearing: the `failed` prop at the ContactForm mount and `newsletter: false` in the privacy block, both props the re-vendored spine introduces."
   ],
   "backup": {
     "managed_pitr": null,
@@ -202,16 +382,42 @@
   },
   "legal": {
     "subprocessors": [
-      { "name": "Netlify", "purpose": "hosting en serverlogs", "location": "EU/VS", "link": "https://www.netlify.com/privacy/" },
-      { "name": "Resend", "purpose": "verzenden van het contactformulier, via de gedeelde contact functie", "location": "EU/VS", "link": "https://resend.com/legal/privacy-policy" },
-      { "name": "Google Maps", "purpose": "kaartweergave op /praktisch, laadt pas na een klik", "location": "EU/VS", "link": "https://policies.google.com/privacy" },
-      { "name": "Google Fonts", "purpose": "weergave van de lettertypes, laadt bij het openen van elke pagina", "location": "EU/VS", "link": "https://policies.google.com/privacy" },
-      { "name": "Google (googleusercontent)", "purpose": "hosting van de fotografie van het cafe, laadt bij het openen van elke pagina", "location": "EU/VS", "link": "https://policies.google.com/privacy" }
+      {
+        "name": "Netlify",
+        "purpose": "hosting en serverlogs",
+        "location": "EU/VS",
+        "link": "https://www.netlify.com/privacy/"
+      },
+      {
+        "name": "Resend",
+        "purpose": "verzenden van het contactformulier, via de gedeelde contact functie",
+        "location": "EU/VS",
+        "link": "https://resend.com/legal/privacy-policy"
+      },
+      {
+        "name": "Google Maps",
+        "purpose": "kaartweergave op /praktisch, laadt pas na een klik op de kaart",
+        "location": "EU/VS",
+        "link": "https://policies.google.com/privacy"
+      },
+      {
+        "name": "Google Fonts",
+        "purpose": "de lettertypes van de site, geladen zodra je een pagina opent",
+        "location": "EU/VS",
+        "link": "https://policies.google.com/privacy"
+      },
+      {
+        "name": "Google Bedrijfsprofiel",
+        "purpose": "de foto's op de site staan op Google en worden geladen zodra je een pagina opent",
+        "location": "EU/VS",
+        "link": "https://policies.google.com/privacy"
+      }
     ],
     "privacy_effective": "14 augustus 2026",
     "maps_embed": true,
     "lang": "nl",
-    "controller_note": "legal.controller is DELIBERATELY ABSENT. At site-contract 1.8.25 the audit writes it at GO-LIVE from the intake record; this surface is a prospect demo with seo.noindex true and no reconciled intake record, so the moment has not arrived and writing it here would manufacture the provenance the 1.8.25 cut exists to require. The two subprocessors added above the site's own three are the S7.4 important finding stated as data rather than only as prose."
+    "controller_note": "legal.controller is STILL DELIBERATELY ABSENT, on the 1.8.25 reasoning unchanged: the audit writes it at GO-LIVE from the intake record, this surface is a prospect demo with seo.noindex true and no reconciled intake record, and writing it here would manufacture the provenance the 1.8.25 cut exists to require. WHAT CHANGED IS THAT THE FIVE ROWS ABOVE ARE NO LONGER A FINDING STATED AS DATA. The 1.8.25 manifest carried the two Google rows the SITE did not, which is how the S7.4 important fail was recorded; src/content/site.config.tsx and charter S8 now carry the same five, so this block and the deployed notice agree. `newsletter: false` is added as a field because the notice now renders conditionally on it.",
+    "newsletter": false
   },
-  "verdict": "CONFORMANT, no gate fails. First full S1-S10 walk of this surface. Every gate row passes: separate app (S1.2), token discipline with zero raw colour outside tokens.css (S2.2), the full regenerated contrast matrix clear on every ground the site reaches (S2.3), no-db with no DB client and no provisioned backend (S5.1, S5.4), no secret and no foreign write (S6.1 to S6.3), charter and repo routes reconciling both ways (S8.4a), the pinned checker held rather than copied (S8.5), zero prose em-dashes (S9.1). Two IMPORTANT findings, both on the privacy notice and both first proved on the deployed page: it describes a newsletter that does not exist, and it omits two Google transfers that happen before any click. The first is a spine defect this lane is barred from fixing and is raised to the Factory. Four raises to the Factory in total, including a verify.mjs pin eight commits behind the seed and a 1.8.25 S3.2 wording that, read literally, fails every site in the fleet the moment it enables a module."
+  "verdict": "CONFORMANT, no gate fails, and this is a RE-AUDIT rather than a re-stamp. The 1.8.25 declaration on this surface was a claim: it read 1.8.25 HELD over a pre-1.8.24 spine, four of eight files differing. All eight plus src/router.tsx and agents/site/verify.mjs are now byte-identical to aismith-site-seed at 768d726641bfdfeac0af5eaf894061faa19e215e (verify [1], 26 of 26 files) and site-contract 1.8.26 is declared in canon.json against Factory 362a3310f24258f38bd88132343ea43c0dedc383. THE GATE IS A DIFFERENT INSTRUMENT BEFORE AND AFTER, which is the honest way to read the two runs: 639 lines became 963, the baseline count 25 became 26 on an unchanged file set, the AA arm went from 12 asserted pairs to 16 asserted of 35 derived with two rgba inks flattened, and a ninth section [8] INSTANTIATION appeared and passes. Sixteen of the twenty cells the last walk regenerated BY HAND are now asserted mechanically and all sixteen agree to the second decimal, including the two rgba composites the pinned checker could not see, which is the S8.5 raise being answered by the instrument rather than by an argument. FOUR ROWS CLOSE: both IMPORTANT findings (the notice describing a newsletter this site does not run, and the two Google transfers it did not name), the English skip link, and the site half of the verify.mjs pin. THREE STAY RAISED TO THE FACTORY: the Factory's own verify.mjs is still a third distinct file (8843e4bb, unmoved), the S3.2 module-stylesheet reading is unchanged at 1.8.26 and still fails every site in the fleet if read literally, and NEW THIS PASS, the phrase `charter-pinned` had no referent here at all, three Factory artifacts having used it against a charter that named no sha. Three additive rows stand untouched (the unmounted newsletter function, no og:image, Lighthouse unmeasured) and two stay PARTIAL (legal.controller until go-live, S3.2a's provisional role inventory). One thing this pass fixes is live rather than theoretical: charter review item 16 records that the contact origin is not yet in the shared function's CONTACT_TENANTS map, so a submitted form is rejected TODAY, and until now the form answered that rejection with `Bedankt, we lezen het en komen erop terug.`"
 }

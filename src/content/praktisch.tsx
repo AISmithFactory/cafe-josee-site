@@ -57,6 +57,14 @@ export function Praktisch() {
         <Lead>
           Voor een groep, een vraag over de kaart of iets anders. Bellen mag ook, op {facts.phone}.
         </Lead>
+        {/* The spine's `failed` default sentence is ENGLISH by design (forms.tsx says so:
+            both mounting sites are Dutch and already override `done`, so the spine refuses to
+            hardcode a language), which means a Dutch page owns its failure copy exactly as it
+            already owns `done`. The sentence below is the spine's contactEmail-less default in
+            Dutch plus the phone number this page already prints: no mail path is offered
+            because none is published, the charter deliberately leaving the cafe's own address
+            unwired and `contact@aismith.io` being the demo catch-all rather than an address a
+            visitor should be sent to. `contactEmail` is therefore NOT passed. */}
         <div style={{ marginTop: 26, maxWidth: 560 }}>
           <ContactForm
             action={site.integrations.contactAction}
@@ -67,6 +75,7 @@ export function Praktisch() {
             ]}
             submitLabel="Verstuur"
             done="Bedankt, we lezen het en komen erop terug."
+            failed={<>Dat is niet doorgekomen, er heeft ons dus niets bereikt. Probeer het straks nog eens, of bel ons op {facts.phone}.</>}
           />
         </div>
       </Section>

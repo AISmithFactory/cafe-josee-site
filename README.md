@@ -6,7 +6,7 @@ Public site for **Cafe Josee**, Vosstraat 2, 2140 Borgerhout (Antwerpen).
 `cafe-josee.demos.aismith.io`. Not a working client, not live, not shown to anyone before the
 operator has reviewed it.
 
-- **Canon pointer:** site-contract **1.8.18**
+- **Canon pointer:** site-contract **1.8.26** (the DECLARATION is `canon.json` `holds[]`; this line is a pointer and read 1.8.18, eight minors stale, until the 1.8.26 wave)
 - **Charter:** [`cafe-josee-site-charter.md`](./cafe-josee-site-charter.md) (the declaration the audit checks)
 - **Brief:** [`docs/cafe-josee-build-brief.md`](./docs/cafe-josee-build-brief.md) (intake S8, the nine-section spec)
 - **Report to the Factory:** [`docs/cafe-josee-social-only-intake-report.md`](./docs/cafe-josee-social-only-intake-report.md)

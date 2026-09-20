@@ -98,6 +98,43 @@ jobs:
           The seed is public, so this is a wrong ref or a network failure, not a missing secret. \
           Do NOT drop --seed or --ci to make this green."
 
+      - name: Assert the HELD checker equals the checker at the pinned SEED_REF
+        # site-contract 1.8.29 / as-site-spine-standard.md v0.13.15, S8 assertion floor:
+        # "assert that the checker it HOLDS equals the checker at the pinned SEED_REF,
+        # and FAIL CLOSED when it does not", naming both line counts in the failure.
+        #
+        # THIS REPO HOLDS A CHECKER. The gate step below runs agents/site/verify.mjs from
+        # THIS repo, not the copy under .seed, so the floor is satisfied by a real
+        # comparison here and never by a stated fact. THE DECLARATION IS WHAT THE FAILURE
+        # PRINTS AND IS NOT AN ALTERNATIVE EXIT: a divergent hold can never report green.
+        #
+        # Gated on the seed checkout for the same reason the gate below is: an unreachable
+        # seed is a visible skip (rule 3 of the floor), never a pass and never a green
+        # assertion. Do not resolve a divergence by moving SEED_REF; the pin is the
+        # charter's and moves only in its own change.
+        if: steps.seed.outcome == 'success'
+        run: |
+          HELD="agents/site/verify.mjs"
+          PINNED=".seed/agents/site/verify.mjs"
+          if [ ! -f "$HELD" ]; then
+            echo "::error title=held-checker assertion::this repo declares a held checker at $HELD and it is absent"
+            exit 1
+          fi
+          if [ ! -f "$PINNED" ]; then
+            echo "::error title=held-checker assertion::no checker at $PINNED in ${{ env.SEED_REPO }}@${{ env.SEED_REF }}"
+            exit 1
+          fi
+          HELD_LINES=$(wc -l < "$HELD")
+          PINNED_LINES=$(wc -l < "$PINNED")
+          HELD_SHA=$(sha256sum "$HELD" | cut -d' ' -f1)
+          PINNED_SHA=$(sha256sum "$PINNED" | cut -d' ' -f1)
+          echo "held   $HELD $HELD_LINES lines sha256 $HELD_SHA"
+          echo "pinned $PINNED $PINNED_LINES lines sha256 $PINNED_SHA (SEED_REF ${{ env.SEED_REF }})"
+          if [ "$HELD_SHA" != "$PINNED_SHA" ]; then
+            echo "::error title=held checker DIVERGED from the pinned seed::held $HELD_LINES lines ($HELD_SHA), pinned $PINNED_LINES lines ($PINNED_SHA) at ${{ env.SEED_REF }}. Resync the held copy from the seed at the pin. Do not loosen this check and do not move the pin."
+            exit 1
+          fi
+          echo "held checker EQUALS the pinned checker: $HELD_LINES lines and sha256 $HELD_SHA on both sides."
 
       - name: Setup Node
         uses: actions/setup-node@v4

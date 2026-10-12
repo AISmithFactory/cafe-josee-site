@@ -1,11 +1,12 @@
 # Cafe Josee, site charter
 
 **Slug** `cafe-josee` · **Repo** `AISmithFactory/cafe-josee-site` · **Built** 14 August 2026
-**Canon pointer** site-contract **1.8.26** (`dist/site-contract/contract.json`, read at Factory
-main `362a3310f24258f38bd88132343ea43c0dedc383`). The DECLARATION is `canon.json` `holds[]`;
+**Canon pointer** site-contract **1.8.31** (`dist/site-contract/contract.json`, read at Factory
+`fb5ad6881f59ade63898f6ccba6270d02940b0de`). The DECLARATION is `canon.json` `holds[]`;
 this line is a pointer and was eight minors stale, reading 1.8.18 from Factory `e0d91cd`, until
-the 1.8.26 wave moved it. A pointer that disagrees with `holds[]` is the pointer's defect.
-**Spine pin** `aismith-site-seed` `768d726641bfdfeac0af5eaf894061faa19e215e`.
+the 1.8.26 wave moved it, and read 1.8.26 through the 1.8.29 wave until the 1.8.31 resync moved
+it. A pointer that disagrees with `holds[]` is the pointer's defect.
+**Spine pin** `aismith-site-seed` `d196a5de2ee5f1aa56d251b68744e9523a5c30a3`.
 **THIS LINE IS THE OPERAND OF `SEED_REF`** in `.github/workflows/site-verify.yml`, whose own
 comment reads *Pin to the sha the charter names, never a moving ref*, and which forbids `main`
 in terms. **THE LINE DID NOT EXIST BEFORE THE 1.8.26 WAVE**: the workflow pinned
@@ -47,7 +48,7 @@ the same two inks on white.
 | `--text` | `#14302D` | |
 | `--text-soft` | `#4A5B55` | |
 | `--action` | `#0A6270` | CTA fill behind white text |
-| `--accent` | `#0F94A5` | sampled from the cup ink `#0295A5`, darkened to sit on cream |
+| `--accent` | `#0F90A0` | sampled from the cup ink `#0295A5`, darkened to sit on cream and to clear 3.0 as the focused field edge on `--bg-alt` |
 | `--accent-text` | `#0A6270` | accent as text on light |
 | `--accent-on-dark` | `#79D6E2` | |
 | `--highlight` | `#0D9A62` | sampled from the green dome |
@@ -77,7 +78,8 @@ faces are the one go-live swap.
 | `--accent-on-dark` | `--dark` | 7.93 |
 | `--accent-on-dark` | `--dark-alt` | 5.50 |
 | white | `--action` | 7.01 |
-| `--on-dark` | `--accent` | 3.29 (large-display only) |
+| `--on-dark` | `--accent` | 3.46 (large-display only) |
+| `--accent` (focused field edge, non-text) | `--bg` / `--surface` / `--bg-alt` | 3.58 / 3.81 / 3.07 (3.0 owed, WCAG 1.4.11) |
 
 `--on-dark` on `--accent` clears the 3.0 large threshold and not 4.5, so **no section uses
 `tone="accent"`**. The accent ink appears only through `--accent-text` on light grounds and

@@ -17,8 +17,12 @@
    - Spine components reference these names ONLY, never a raw hex, never a
      colour-named token. Re-skinning = change values here, touch nothing else.
    - Accent used AS TEXT on a light surface uses --accent-text (AA-safe),
-     never --accent.  (Teal #0F94A5 on cream = 3.09:1, fails AA;
+     never --accent.  (Teal #0F90A0 on cream = 3.58:1, fails AA as text;
      Teal Diep #0A6270 on cream = 6.61:1, passes.)
+   - --accent is also the FOCUSED form-field edge (spine.css), a non-text pair
+     owed 3.0 against every card ground (WCAG 1.4.11). The previous #0F94A5
+     read 2.92 on Karton Diep; #0F90A0 is the smallest darkening that clears
+     it (3.07), and every --accent pair the gate scores moves up with it.
    - Every text/bg pair below clears WCAG AA. Matrix re-derived on THIS palette
      at build time (S2.3); the numbers are in the charter.
    ============================================================================ */
@@ -36,7 +40,7 @@
 
   --action:        #0A6270;            /* Teal Diep, CTA fill behind white text (7.01:1) */
   --action-strong: #074B56;            /* pressed / chunky shadow               */
-  --accent:        #0F94A5;            /* Teal, the cup ink: fills, marks, large display */
+  --accent:        #0F90A0;            /* Teal, the cup ink: fills, marks, large display, the focused field edge (3.07 on Karton Diep) */
   --accent-text:   #0A6270;            /* Teal Diep, accent AS TEXT on light (AA-safe) */
   --accent-on-dark:#79D6E2;            /* Teal Licht, accent AS TEXT on dark (7.93 / 5.50) */
   --highlight:     #0D9A62;            /* Josee Groen, the dome: dividers, dots */

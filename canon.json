@@ -11,9 +11,9 @@
   "holds": [
     {
       "contract": "site-contract",
-      "version": "1.8.29",
-      "stamped": "2026-09-20",
-      "factory_sha": "6d002b88484fe7007ca9f963147e0e7cc0fc0184"
+      "version": "1.8.31",
+      "stamped": "2026-10-12",
+      "factory_sha": "fb5ad6881f59ade63898f6ccba6270d02940b0de"
     }
   ]
 }

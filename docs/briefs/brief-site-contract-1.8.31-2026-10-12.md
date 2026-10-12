@@ -1,0 +1,7 @@
+# Work order -- site-contract 1.8.31, pushed by the Factory (seat `controller-2026-10-11`, 2026-10-12)
+
+**Version 1.0.** The Factory pushed `dist/site-contract/` at **1.8.31** (Factory `main` `fb5ad688`, the coupled cut #1383) into this surface by `scripts/push-surface.sh`. The plan is `prompts/dispatch/plan-cut-1721-1831-2026-10-11.md` v0.2 in `aIsmith100/AISmith-Factory`; SS7d is this surface's resync, SS7b and SS7c the order.
+
+- **This push PR** carries the prose under `contract/site-contract/` (and the POINTER where it changes). Where this surface's `site-verify.yml` is TEMPLATE-DIVERGED, the push left it and `holds[]` stays at the held version: the **resync** takes the template by hand and restamps `holds[]` to 1.8.31 (plan J1 and Q1).
+- **The resync is a SECOND PR, after this one merges** (contract before code, SS7c item 7), in ONE commit: `SEED_REF` and the charter pin to the full sha of `aismith-site-seed` `main` the cut re-embedded; the four spine files and `modules/gallery.*` re-vendored; `agents/site/verify.mjs` equal to the pinned seed's; the skin's field edge clearing 3.0 (R121); every non-English `GalleryGrid` passing its three labels (R123); the `ContactForm` honeypot prop re-read against R197; and the link-preview card per SS7d. The Factory controller briefs it on this surface's lane after this PR merges.
+- **It is a wave PR**: it sits open until every surface of the wave has answered (Factory `docs/controller-role.md` SS3a). A site that is live deploys on merge only on the operator's word.

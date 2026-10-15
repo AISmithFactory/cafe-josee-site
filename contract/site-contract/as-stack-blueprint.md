@@ -1,6 +1,6 @@
 # AI Smith -- Stack Blueprint for Parallel Projects
 
-Version 1.33 -- 11 October 2026
+Version 1.34 -- 15 October 2026
 
 > Tech and tooling defaults for any new project Simone spins up under the
 > AI Smith umbrella. Tightened against the Zuidgeluid gap analysis (May
@@ -14,6 +14,8 @@ Version 1.33 -- 11 October 2026
 > current best guess; SK's historical actuals may differ in places
 > (theme, host) -- treat SK as a worked example, not as the canonical
 > default.
+
+**v1.34 changes from v1.33:** hub-contract 1.7.23 -> **1.7.24** and site-contract 1.8.32 -> **1.8.33**, the coupled cut (`prompts/dispatch/plan-cut-1724-2026-10-15.md` v0.2 member (6), and Q3 (a) of the operator's ruling of 2026-10-15: site-contract 1.8.33's only content is this file). SS7's deploy checkpoint is ruling 81's (`docs/rulings/ruling-two-tracks-2026-09-24.md` v1.48): its *human merge checkpoint* and *human checkpoint* read *the deploy checkpoint* at the six places that named it (SS1A twice, SS7's deploy-pipe paragraph twice and its enforcement paragraph twice), and SS7 states once that the deploy checkpoint is a merge by a controller seat or by the operator, after the required checks and the review ruling 64 selects, never the merge of the lane that built the change and never unattended; the invariant that no agent or CI session holds an unattended deploy credential stands word for word (ruling 81 (c)). One root file stamped into both tracks, so the site copy moves with the hub copy (the plan's J1). The unstamped twins (`as-agent-fleet.md` v0.14, `agents/support/hub/SUPPORT.md`, `agents/scaffold/hub/CLAUDE.md`) move in the same PR, held by `scripts/deploy-checkpoint-check.py`. No other section moves; SS7's dated live read of 2026-08-04 naming `aismith-hub` stays as history (member (4)). A RECORD for the T3 register (`backlog.md`'s PENDING-PROMOTION row): no rule rides this entry. No em dashes.
 
 **v1.33 changes from v1.32:** hub-contract 1.7.20 -> **1.7.21** and site-contract 1.8.30 -> **1.8.31**, the coupled cut (`prompts/dispatch/plan-cut-1721-1831-2026-10-11.md` v0.2 E15 and E19). SS7's merge run-book stops gating a branch delete on `merged: true` as the normal path: GitHub deletes the merged branch on merge (`delete_branch_on_merge`, set 2026-09-29 on every non-archived repo in `AISmithFactory` and `aIsmith100`), a merge is still confirmed `merged: true` before it is reported, and a branch that survives a confirmed merge is deleted only after every open PR stacked on it is retargeted, which is `docs/controller-role.md` SS0's sentence (R196). **This doc's changelog is classified for the T3 register (R167)**: 25 entries, the 21 top-of-file `changes from` entries and the four archived tail entries (v1.11, v1.10, v1.9, v1.8); 23 are RECORDS whose rules already live in SS1A, SS1B, SS5, SS6 or SS7, and TWO are RULES the body did not state, both PROMOTED to SS7 here with their entries marked where they stand: v1.24 (a), `frontend-check` runs `tsc -b --noEmit --force` with a zero-files guard (SS7's four-gates paragraph still read `tsc --noEmit`), and v1.26's method rule, a parser feeding a required gate is run once against real CLI output before it ships (stated until now only in `hub-deploy.yml` and `docs/operating-gotchas.md`). No em dashes.
 
@@ -235,7 +237,7 @@ separate and only used where a public SEO site is needed.
 - PostgreSQL + Row-Level Security on every table
 - Supabase Auth (email/password from day one)
 - Supabase Edge Functions — all hub-owned governing logic; deployed from the repo through the
-  hub deploy pipe (§7, behind the human checkpoint), never by manual Studio paste or unattended
+  hub deploy pipe (§7, behind the deploy checkpoint), never by manual Studio paste or unattended
   auto-deploy
 - Supabase Storage + signed URLs
 - pg_cron + Queues (pgmq) — scheduled/queued hub-internal work
@@ -264,7 +266,7 @@ API/connector glue where no UI needs driving; **n8n is not in the hub stack** �
 studio-ops only, superseded inside the hub by edge functions + pg_cron.
 
 **Non-negotiables (not just defaults):** edge functions deploy from the repo through the hub
-deploy pipe (`hub-deploy.yml`, behind the human checkpoint), never by manual Studio paste;
+deploy pipe (`hub-deploy.yml`, behind the deploy checkpoint), never by manual Studio paste;
 Studio-only schema changes must be mirrored to tracked migrations (top recurring
 tech-debt); code/live schema is authoritative over docs; one Supabase org, one
 project per hub; repo + Supabase project are the two transfer-on-exit anchors.
@@ -1001,11 +1003,17 @@ the wrong panel wastes a maintenance window.
 ### Hub deploy pipe (schema + functions) -- repo-as-truth, one production path (+ optional preview branching)
 
 A hub's `supabase/migrations/**` + `supabase/functions/**` deploy **from the repo**, behind a
-**required migration check** and a **human merge checkpoint**, by **one production path: the GitHub
+**required migration check** and the **deploy checkpoint**, by **one production path: the GitHub
 Action (a)**. Supabase native branching (b) is an **optional preview-only layer** beneath it, never a
 second path to prod. The invariants hold on the production path: repo-as-truth, the required
-migration check, the human checkpoint, **never** raw SQL on prod, and **no agent or CI session
+migration check, the deploy checkpoint, **never** raw SQL on prod, and **no agent or CI session
 holds an unattended deploy credential**.
+
+**The deploy checkpoint is a merge by a controller seat or by the operator**, after the required checks
+and the review ruling 64 selects; **never the merge of the lane that built the change, and never
+unattended** (ruling 81 of `docs/rulings/ruling-two-tracks-2026-09-24.md`, at v1.34 of this file: that
+merge is what this section's checkpoint means, ruling 24 having made a `[deploys]` PR the controller's to
+merge like any other).
 
 - **(a) GitHub Action -- `hub-deploy.yml` -- the production deploy path.** `migrations-check` (required) + `db push` +
   `functions deploy` on merge, behind the `production` Environment's required reviewer; CI holds the
@@ -1094,12 +1102,12 @@ catches it earlier so the Actions track isn't exposed.
 **Enforcement is plan-dependent.** "Required `migrations-check` blocks merge" hard-binds only where
 branch protection is *enforceable* (GitHub Pro + a ruleset on a personal private repo, or a
 Team/Enterprise org). On a Free personal private repo the check **runs and reports but does not
-block**; the human-merge checkpoint and no-unattended-credential invariants hold regardless. The
+block**; the deploy checkpoint and no-unattended-credential invariants hold regardless. The
 **deploy-side gate is plan-dependent too**: the `production` Environment's **required-reviewer** rule
 enforces on a **private** repo only under **GitHub Enterprise** -- on **Pro/Team** it cannot be set, so
-the **human merge itself is the deploy checkpoint** (the env still tracks deployments and activates if
-the org upgrades to Enterprise). Either way nothing deploys without a human merge and no unattended
-credential is held. (Hub governance detail: `as-agent-fleet.md` §6; account topology:
+the **merge itself is the deploy checkpoint**, a merge by a controller seat or by the operator (the env
+still tracks deployments and activates if the org upgrades to Enterprise). Either way nothing deploys
+without that merge and no unattended credential is held. (Hub governance detail: `as-agent-fleet.md` §6; account topology:
 `as-fleet-organisation.md` §7A.)
 
 **The four PR gates (v1.23, hub-contract 1.6.4).** `hub-deploy.yml` is the single stamped CI
